@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa Mental - APH Prisional</title>
+<style>
+:root{
+ --bg:#000; --fg:#fff; --gold:#d9a900;
+ --box:#232323; --line:#bfe9ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,sans-serif}
+header{background:#fff;text-align:center;padding:10px;border-bottom:3px solid var(--gold)}
+header img{max-width:260px;width:90%}
+header h2{margin:10px 0 0;color:#000;font-size:1.6rem}
+.toolbar{display:flex;justify-content:center;gap:12px;padding:10px;background:#111;position:sticky;top:0;z-index:10}
+.toolbar button,.zoom button{background:var(--gold);border:none;border-radius:20px;padding:10px 16px;font-weight:bold;cursor:pointer}
+#wrap{overflow:auto;height:calc(100vh - 170px)}
+#canvas{position:relative;min-width:1800px;min-height:2200px;transform-origin:top left}
+svg{position:absolute;inset:0;overflow:visible}
+.node{position:absolute;background:var(--box);color:#fff;border-radius:14px;padding:10px 14px;transition:.3s;cursor:pointer}
+.root{border:2px solid var(--gold);font-weight:bold}
+.leaf{min-width:260px;cursor:default}
+.hidden{opacity:0;transform:scale(.9);pointer-events:none}
+path{stroke:var(--line);stroke-width:2;fill:none;transition:.3s}
+.hiddenLine{opacity:0}
+circle{fill:var(--gold)}
+.zoom{position:fixed;right:14px;bottom:14px;display:flex;flex-direction:column;gap:10px}
+.zoom button{width:46px;height:46px;border-radius:50%;padding:0;font-size:22px}
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+.top{
+ background:var(--gold);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+
+</style>
+</head>
+<body>
+<header>
+<img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png">
+<h2>Mapa mental - APH Prisional</h2>
+</header>
+<div class="topbar">
+<button class="top" onclick="location.href='../mapas.html'">Menu</button>
+</div>
+
+<div class="toolbar">
+<button onclick="expandAll()">Expandir tudo</button>
+<button onclick="collapseAll()">Recolher tudo</button>
+</div>
+
+<div id="wrap"><div id="canvas"><svg id="svg" width="2200" height="2400"></svg></div></div>
+<div class="zoom"><button onclick="zoomIn()">+</button><button onclick="zoomOut()">−</button></div>
+
+<script>
+const data=[
+["Fundamentação Teórica",["Primeiro atendimento profissional","Emergências clínicas e traumáticas","Adaptação ao sistema penitenciário","Integração APH institucional e ética"]],
+["Causas de Morte em Combate",["Hemorragia","Pneumotórax","Obstrução de vias aéreas","Mortes evitáveis"]],
+["Fases do Atendimento (TCCC)",["Zona Quente","Zona Morna","Zona Fria"]],
+["Segurança de Cena",["Ordem de prioridade","Riscos no sistema prisional","Atuação em conflito"]],
+["Proteção Balística",["Capacidade de colete","Vulnerabilidade a armas longas","Manutenção e uso"]],
+["Protocolo MARCH",["M-Hemorragia maciça","A-Via aérea","R-Respiração","C-Circulação","H-Hipotermia"]],
+["Traumatismo Crânio Encefálico",["Sinal de olho de guaxinim","Sinal de Battle","Confusão mental e vômitos"]]
+];
+
+const c=canvas, s=svg, groups=[];
+function n(t,x,y,cls=""){
+ let d=document.createElement("div");
+ d.className="node "+cls;
+ d.textContent=t;
+ d.style.left=x+"px"; d.style.top=y+"px";
+ c.appendChild(d); return d;
+}
+function p(x1,y1,x2,y2){
+ let e=document.createElementNS("http://www.w3.org/2000/svg","path");
+ let dx=(x2-x1)*0.45;
+ e.setAttribute("d",`M ${x1} ${y1} C ${x1+dx} ${y1}, ${x2-dx} ${y2}, ${x2} ${y2}`);
+ s.appendChild(e); return e;
+}
+function dot(x,y){
+ let o=document.createElementNS("http://www.w3.org/2000/svg","circle");
+ o.setAttribute("cx",x);o.setAttribute("cy",y);o.setAttribute("r",4);
+ s.appendChild(o); return o;
+}
+n("APH Prisional",30,980,"root");
+let rx=200, ry=1005, y=40;
+
+data.forEach(g=>{
+ const par=n(g[0],250,y);
+ const py=y+22;
+ p(rx,ry,250,py); dot(250,py);
+
+ let leaves=[], lines=[], dots=[], ly=y-10;
+ g[1].forEach(t=>{
+   let lf=n(t,560,ly,"leaf hidden");
+   let ln=p(420,py,560,ly+22); ln.classList.add("hiddenLine");
+   let dt=dot(420,py); dt.classList.add("hiddenLine");
+   leaves.push(lf); lines.push(ln); dots.push(dt);
+   ly+=62;
+ });
+
+ par.open=false;
+ par.onclick=()=>{
+   par.open=!par.open;
+   leaves.forEach(x=>x.classList.toggle("hidden",!par.open));
+   lines.forEach(x=>x.classList.toggle("hiddenLine",!par.open));
+   dots.forEach(x=>x.classList.toggle("hiddenLine",!par.open));
+ };
+ groups.push({par,leaves,lines,dots});
+ y+=Math.max(250,g[1].length*70+70);
+});
+
+function expandAll(){groups.forEach(g=>{g.par.open=true;g.leaves.forEach(x=>x.classList.remove("hidden"));g.lines.forEach(x=>x.classList.remove("hiddenLine"));g.dots.forEach(x=>x.classList.remove("hiddenLine"));});}
+function collapseAll(){groups.forEach(g=>{g.par.open=false;g.leaves.forEach(x=>x.classList.add("hidden"));g.lines.forEach(x=>x.classList.add("hiddenLine"));g.dots.forEach(x=>x.classList.add("hiddenLine"));});}
+
+let z=window.innerWidth<=480?0.55:window.innerWidth<=768?0.65:1;
+function apply(){c.style.transform=`scale(${z})`;}
+function zoomIn(){z=Math.min(1.5,z+.1);apply();}
+function zoomOut(){z=Math.max(.35,z-.1);apply();}
+window.onload=apply;
+</script>
+</body>
+</html>
