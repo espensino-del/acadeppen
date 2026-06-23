@@ -1,0 +1,979 @@
+<!DOCTYPE html><html lang="pt-br"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>APH Prisional</title>
+<style>
+:root{--d:#d9a900}
+*{box-sizing:border-box}
+body{margin:0;background:#000;font-family:Segoe UI,Arial,sans-serif}
+.header{background:#fff;padding:18px;text-align:center}
+.logo img{max-width:320px;width:92%}
+h2{color:#333;margin:10px 0 4px}
+.container{max-width:760px;margin:auto;padding:18px}
+.progress{height:8px;background:#222;border-radius:999px;overflow:hidden;margin-bottom:18px}
+.bar{height:100%;width:0;background:var(--d);transition:.3s}
+.card{height:460px;perspective:1200px}
+.hidden{display:none}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;background:#fff;border-radius:28px;padding:28px;
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+text-align:center;backface-visibility:hidden;border-top:8px solid var(--d);
+box-shadow:0 10px 35px rgba(255,255,255,.08)}
+.back{transform:rotateY(180deg)}
+.badge{background:var(--d);color:#fff;padding:8px 16px;border-radius:999px;font-weight:700}
+.content{margin:26px 0;font-size:1.12rem;line-height:1.7;overflow:auto;max-height:280px}
+.tip{color:#666}
+.controls{display:flex;gap:14px;margin-top:18px}
+button{flex:1;background:#333;color:#fff;border:none;border-radius:16px;padding:15px;font-weight:700;cursor:pointer}
+.counter{text-align:center;color:#fff;margin-top:14px}
+@media(max-width:600px){.card{height:520px} .content{font-size:1.02rem}}
+
+.top{
+ background:var(--d);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+}
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+
+
+</style></head>
+<body>
+<div class="header">
+<div class="logo">
+<img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png">
+</div>
+<h2>Flashcards Interativos-APH Prisional</h2>
+
+</div>
+<div class="topbar">
+<button class="top" onclick="location.href='../cards.html'">Menu</button>
+</a>
+</div>
+<div class="container">
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual é a principal causa de morte em combate, correspondendo a 60% dos casos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Hemorragia.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O pneumotórax é responsável por qual porcentagem das causas de morte em combate?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">33%.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a porcentagem de mortes em combate que ocorrem na fase pré-hospitalar?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">87%.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Das mortes em combate, qual porcentagem é considerada evitável?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">24%.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Quais são as quatro principais causas de mortes evitáveis no contexto tático?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Hemorragia (extremidades/juncionais), pneumotórax e obstrução de vias aéreas.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">No TCCC, qual o nome da fase de atendimento realizada na Zona Quente?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Cuidado Sob Fogo (Care Under Fire).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual o objetivo principal do atendimento na Zona Quente?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Extricação do ferido e orientação para autoatendimento inicial sob abrigo.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Como é denominada a Zona Morna no protocolo de atendimento tático?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Cuidado em Campo Tático (Tactical Field Care).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a prioridade de atendimento na Zona Morna?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Realizar o protocolo MARCH completo e verificar especificidades do APH Prisional.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que caracteriza a fase de Cuidado Tático de Evacuação (Zona Fria)?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Área com segurança garantida para reavaliação e transporte à unidade de saúde.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a ordem de prioridade na segurança de cena durante um atendimento?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">1º Eu (socorrista); 2º Equipe; 3º Preso ou Paciente.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">No sistema prisional, cite dois riscos ambientais específicos para a segurança da cena.</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Fios desencapados nas grades e a massa carcerária.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a regra de ouro em áreas de conflito antes de socorrer uma vítima?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Cessar a ameaça e tornar a cena segura.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Complete a frase: &quot;A melhor medicina em combate é a _____ de fogo&quot;.</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Superioridade.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O colete balístico da SUSEPE é eficaz contra calibres de armas longas (ex: 5.56 ou 7.62)?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Não, suporta apenas a maioria dos calibres curtos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Por que o colete balístico padrão não suporta ataques por arma branca?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Porque é feito de materiais trançados que não oferecem resistência a perfurações.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a recomendação correta para o armazenamento do colete balístico?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Armazenar deitado, para evitar a deformação do material.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">No protocolo MARCH, o que representa a letra &#x27;M&#x27;?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Hemorragia Massiva.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">No protocolo MARCH, o que representa a letra &#x27;A&#x27;?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Via Aérea.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">No protocolo MARCH, o que representa a letra &#x27;R&#x27;?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Respiração.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">No protocolo MARCH, o que representa a letra &#x27;C&#x27;?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Circulação.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">No protocolo MARCH, o que representa a letra &#x27;H&#x27;?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Hipotermia.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a consequência clínica da rápida perda de sangue que leva à morte se não tratada?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Hipovolemia resultando em choque hemorrágico.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Como deve ser feita a identificação de sangramentos escondidos pelas roupas?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Realizando a palpação investigatória (Técnica do Rastel).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Quais as características visuais do sangue em uma hemorragia arterial?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Sangue em jato e de cor vermelho vivo e brilhante.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Quais as características visuais do sangue em uma hemorragia venosa?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Fluxo mais lento e de cor vermelho escuro.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Quais são as três manobras principais para contenção de hemorragias?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Compressão (direta ou bandagens), Preenchimento e Aplicação de Torniquete.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Em quais situações é indicado o preenchimento (packing) de feridas?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Feridas grandes e profundas em áreas juncionais onde não cabe torniquete.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual o tempo de pressão manual necessário ao usar gaze com agente coagulante?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">3 a 5 minutos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual o tempo de pressão manual necessário ao usar gaze comum (sem agente coagulante)?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">5 a 10 minutos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Cite dois agentes hemostáticos comuns encontrados em gazes especiais.</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Caulim e Quitosana.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O uso de torniquete é indicado para hemorragias graves em quais partes do corpo?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Extremidades (membros).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Onde o torniquete NUNCA deve ser posicionado?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Em cima de articulações (joelhos, cotovelos ou tornozelos).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que caracteriza a aplicação &#x27;emergencial&#x27; de um torniquete?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Aplicação &#x27;alto e apertado&#x27; por cima da roupa, quando não se visualiza o local exato da lesão.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que caracteriza a aplicação &#x27;deliberada&#x27; de um torniquete?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Aplicação 4 dedos acima da lesão, diretamente na pele, em ambientes controlados.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual informação deve ser obrigatoriamente registrada no torniquete após a aplicação?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">A hora da aplicação.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a definição de &#x27;Conversão do Torniquete&#x27;?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Reversão do torniquete para outra técnica (compressão ou preenchimento) quando seguro.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Até quanto tempo um torniquete pode ficar aplicado com segurança relativa?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Até duas horas.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Quais os sinais clássicos de traumatismo cranioencefálico (TCE) grave?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Sonolência, vômitos, confusão mental, olho de guaxinim e sinal de Battle (Butler).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a conduta indicada para casos de escalpelamento?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Curativo compressivo com touca craniana (enfaixamento).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a principal causa de obstrução de vias aéreas por relaxamento muscular?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Queda da musculatura da base da língua sobre as vias aéreas.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Como deve ser feita a mensuração da cânula nasofaríngea?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Da ponta do nariz ao lóbulo da orelha ou ângulo da mandíbula.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a principal contraindicação para o uso da cânula nasofaríngea?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Suspeita de fratura de base de crânio.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a vantagem da cânula nasofaríngea sobre a orofaríngea (Guedel)?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Pode ser usada em pacientes com reflexo de vômito preservado.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Diferencie &#x27;Vias Aéreas&#x27; de &#x27;Ventilação Pulmonar&#x27;.</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Vias Aéreas são o canal físico; Ventilação é o ato da passagem do ar até os alvéolos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Quando o controle cervical deve ser priorizado no atendimento tático?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Apenas quando a cena está segura (Zona Fria) e não há risco iminente de fogo.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual o tratamento imediato para um ferimento torácico aberto (pneumotórax)?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Aplicação de curativo oclusivo (Selo de Tórax ou curativo de três pontas).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Como funciona o curativo de três pontas no trauma de tórax?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Impede a entrada de ar no ferimento, mas permite a saída de ar e fluidos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que causa um pneumotórax fechado traumático?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Trauma (como fratura de costela) que perfura o pulmão sem romper a parede torácica externa.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Quais são os três sintomas principais de um pneumotórax?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Dor no peito, respiração acelerada e falta de ar.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Por que o colete balístico deve ficar ajustado ao corpo sem folgas?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Para garantir a absorção correta do impacto do projétil.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a conduta se o socorrista estiver em uma Zona Quente e precisar de apoio médico externo?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Deve remover a vítima para uma zona segura, pois SAMU e Bombeiros não entram em zonas quentes.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que significa &#x27;extricação&#x27; no contexto de APH?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">A retirada da vítima de um local de perigo para uma área de atendimento.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a função do lubrificante hidrossolúvel na inserção da cânula nasofaríngea?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Facilitar a passagem pela narina e reduzir o trauma na mucosa.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Por que não se deve tentar tratar a vítima enquanto estiver sob fogo direto?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Para evitar tornar-se uma nova vítima; a prioridade é a eliminação da ameaça.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Em que posição o bisel da cânula nasofaríngea deve estar no início da inserção?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Voltado para o septo nasal.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O sinal de equimose atrás da orelha é conhecido no material como:</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Sinal de Butler (Battle).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a recomendação se houver dúvida sobre onde colocar o torniquete na Zona Quente?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Aplicar o mais alto e apertado possível no membro ferido.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual o número de telefone de emergência do SAMU e dos Bombeiros no Brasil?</div>
+<div class="tip">Toque para virar</div>
+</div>
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">SAMU 192 e Bombeiros 193.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+
+<div class="controls">
+<button id="prev">⬅ Anterior</button>
+<button id="next">Próximo ➡</button>
+</div>
+
+<div class="counter"><span id="cur">1</span> / 59 cartões</div>
+</div>
+
+<script>
+const cards=[...document.querySelectorAll('.card')];
+let i=0;
+function upd(){
+ cards.forEach((c,n)=>c.classList.toggle('hidden',n!==i));
+ cur.textContent=i+1;
+ bar.style.width=((i+1)/cards.length*100)+'%';
+}
+upd();
+
+cards.forEach(c=>c.onclick=()=>c.classList.toggle('flipped'));
+
+next.onclick=()=>{cards[i].classList.remove('flipped');i=(i+1)%cards.length;upd();}
+prev.onclick=()=>{cards[i].classList.remove('flipped');i=(i-1+cards.length)%cards.length;upd();}
+
+let sx=0;
+document.addEventListener('touchstart',e=>sx=e.changedTouches[0].screenX);
+document.addEventListener('touchend',e=>{
+ let dx=e.changedTouches[0].screenX-sx;
+ if(Math.abs(dx)>60){
+   cards[i].classList.remove('flipped');
+   i=dx<0?(i+1)%cards.length:(i-1+cards.length)%cards.length;
+   upd();
+ }
+});
+</script>
+</body></html>
