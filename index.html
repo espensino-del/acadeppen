@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca de Conteúdos</title>
+
+<style>
+:root{
+ --bg:#000;
+ --fg:#fff;
+ --gold:#d9a900;
+ --card:#232323;
+}
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+body{
+ background:var(--bg);
+ color:var(--fg);
+ font-family:Arial,sans-serif;
+ min-height:100vh;
+ display:flex;
+ flex-direction:column;
+}
+
+header{
+ background:#fff;
+ padding:20px;
+ text-align:center;
+ border-bottom:4px solid var(--gold);
+}
+
+header img{
+ max-width:250px;
+ width:90%;
+}
+
+header h2{
+ color:#000;
+ margin-top:15px;
+}
+
+main{
+ flex:1;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:30px;
+ flex-wrap:wrap;
+ padding:40px;
+}
+
+.card{
+ width:320px;
+ min-height:220px;
+ background:var(--card);
+ border:2px solid var(--gold);
+ border-radius:20px;
+ text-decoration:none;
+ color:white;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ transition:.3s;
+}
+
+.card:hover{
+ transform:translateY(-5px);
+ box-shadow:0 0 20px rgba(217,169,0,.5);
+}
+
+.card h2{
+ margin-bottom:10px;
+}
+
+.card p{
+ color:#ccc;
+ text-align:center;
+ padding:0 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png" alt="Logo">
+<h2>Biblioteca de Conteúdos</h2>
+</header>
+
+<main>
+
+<a class="card" href="mapas.html">
+<h3>Mapas Mentais</h3>
+<p>Resumos visuais e esquemas de estudo.</p>
+</a>
+
+<a class="card" href="cards.html">
+<h2>Cards Interativos</h2>
+<p>Revisão rápida dos conteúdos.</p>
+</a>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cards</title>
+
+<style>
+
+:root{
+ --bg:#000;
+ --fg:#fff;
+ --gold:#d9a900;
+ --card:#232323;
+}
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+body{
+ background:var(--bg);
+ color:var(--fg);
+ font-family:Arial,sans-serif;
+}
+
+header{
+ background:#fff;
+ border-bottom:4px solid var(--gold);
+ padding:20px;
+ text-align:center;
+ header h2{font-size:1.25rem;margin-top:8px}
+ 
+}
+
+header h2{
+ color:#000;
+}
+
+header img{
+    width:260px;
+    max-width:90%;
+    padding-bottom:20px;
+    height:auto;
+    display:block;
+    margin:auto;
+}
+
+
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+
+.btn{
+ background:var(--gold);
+ color:#000;
+ text-decoration:none;
+ padding:10px 20px;
+ border-radius:30px;
+ font-weight:bold;
+ display:inline-block;
+}
+
+.container{
+ max-width:1000px;
+ margin:auto;
+ padding:30px;
+}
+
+.lista{
+ display:grid;
+ gap:15px;
+}
+
+.item{
+ background:var(--card);
+ border-left:4px solid var(--gold);
+ padding:18px;
+ border-radius:10px;
+ text-decoration:none;
+ color:white;
+ transition:.3s;
+}
+
+.item:hover{
+ transform:translateX(5px);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png" alt="Logo">
+<h2>Cards interativos</h2>
+</header>
+
+<div class="topbar">
+<a href="file:///C:/Users/esp/Desktop/materias/index.html" class="btn">
+🏠 Página Inicial
+</a>
+</div>
+
+<div class="container">
+
+<div class="lista">
+
+<a class="item" href="cards/cards_AltPen.html">
+Alternativas Penais
+</a>
+
+<a class="item" href="#">
+Lei de Execução Penal
+</a>
+
+<a class="item" href="#">
+Direitos Humanos
+</a>
+
+<a class="item" href="#">
+Segurança Institucional
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
