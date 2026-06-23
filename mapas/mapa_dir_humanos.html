@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa Mental - APH Prisional</title>
+<style>
+:root{
+ --bg:#000; --fg:#fff; --gold:#d9a900;
+ --box:#232323; --line:#bfe9ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,sans-serif}
+header{background:#fff;text-align:center;padding:10px;border-bottom:3px solid var(--gold)}
+header img{max-width:260px;width:90%}
+header h2{margin:10px 0 0;color:#000;font-size:1.6rem}
+.toolbar{display:flex;justify-content:center;gap:12px;padding:10px;background:#111;position:sticky;top:0;z-index:10}
+.toolbar button,.zoom button{background:var(--gold);border:none;border-radius:20px;padding:10px 16px;font-weight:bold;cursor:pointer}
+#wrap{overflow:auto;height:calc(100vh - 170px)}
+#canvas{position:relative;min-width:1800px;min-height:2200px;transform-origin:top left}
+svg{position:absolute;inset:0;overflow:visible}
+.node{position:absolute;background:var(--box);color:#fff;border-radius:14px;padding:10px 14px;transition:.3s;cursor:pointer}
+.root{border:2px solid var(--gold);font-weight:bold}
+.leaf{min-width:260px;cursor:default}
+.hidden{opacity:0;transform:scale(.9);pointer-events:none}
+path{stroke:var(--line);stroke-width:2;fill:none;transition:.3s}
+.hiddenLine{opacity:0}
+circle{fill:var(--gold)}
+.zoom{position:fixed;right:14px;bottom:14px;display:flex;flex-direction:column;gap:10px}
+.zoom button{width:46px;height:46px;border-radius:50%;padding:0;font-size:22px}
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+.top{
+ background:var(--gold);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+
+</style>
+</head>
+<body>
+<header>
+<img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png">
+<h2>Mapa mental - Direitos Humanos</h2>
+</header>
+<div class="topbar">
+<button class="top" onclick="location.href='../mapas.html'">Menu</button>
+</div>
+
+<div class="toolbar">
+<button onclick="expandAll()">Expandir tudo</button>
+<button onclick="collapseAll()">Recolher tudo</button>
+</div>
+
+<div id="wrap"><div id="canvas"><svg id="svg" width="2300" height="2400"></svg></div></div>
+<div class="zoom"><button onclick="zin()">+</button><button onclick="zout()">−</button></div>
+
+<script>
+const data=[
+["Conceito e Fundamentação",["Dignidade Humana","Direitos Inerentes","Universalidade","Não-discriminação","Direitos Inalienáveis"]],
+["Características",["Historicidade","Universalidade","Relatividade","Irrenunciabilidade","Imprescritibilidade","Indivisibilidade","Interdependência"]],
+["Distinção Normativa",[
+ ["Direitos Fundamentais",["Plano Interno","Constituições"]],
+ ["Direitos Humanos",["Plano Internacional","Tratados e Declarações"]]
+]],
+["Contexto Histórico",["Soberania Estatal Absoluta","Segunda Guerra Mundial","Regime Nazista","Necessidade de Proteção Internacional"]],
+["Conteúdo Programático e Normas",["DUDH (1948)","Constituição Federal (1988)","Regras de Mandela (Pessoas Presas)","Regras de Bangkok (Mulheres)","Pacto Direitos Civis e Políticos","Convenção Contra Tortura"]],
+["Perspectiva Prisional",["Direitos vs Benefícios","Direito a ter Direitos","Dignidade no Sistema Penal","Missão da Polícia Penal","Inclusão Social"]],
+["Constituição Federal de 1988",["Dignidade como fundamento","Prevalência dos Direitos Humanos","Aplicação Imediata","Cláusulas Pétreas","Reconhecimento de Tratados"]],
+["Problemas de Efetivação",["Realidade Excludente","Desumanização","Vitimização de Grupos","Criminalidade Organizada"]]
+];
+
+const c=canvas,s=svg,groups=[];
+function mk(t,x,y,cls=""){
+ let d=document.createElement('div');
+ d.className='node '+cls;
+ d.textContent=t; d.style.left=x+'px'; d.style.top=y+'px';
+ c.appendChild(d); return d;
+}
+function curve(x1,y1,x2,y2){
+ let p=document.createElementNS("http://www.w3.org/2000/svg","path");
+ let dx=(x2-x1)*.45;
+ p.setAttribute("d",`M ${x1} ${y1} C ${x1+dx} ${y1}, ${x2-dx} ${y2}, ${x2} ${y2}`);
+ s.appendChild(p); return p;
+}
+function dot(x,y){
+ let o=document.createElementNS("http://www.w3.org/2000/svg","circle");
+ o.setAttribute("cx",x);o.setAttribute("cy",y);o.setAttribute("r",4);
+ s.appendChild(o); return o;
+}
+mk("Direitos Humanos",20,980,"root");
+let rootX=185,rootY=1005,y=40;
+
+for(const g of data){
+ const p=mk(g[0],240,y);
+ const py=y+22;
+ curve(rootX,rootY,240,py); dot(240,py);
+ let nodes=[],lines=[],dots=[];
+ let ly=y-10;
+ for(const item of g[1]){
+   if(Array.isArray(item)){
+      const n=mk(item[0],560,ly); n.classList.add("hidden");
+      const l=curve(410,py,560,ly+22); l.classList.add("hiddenLine");
+      const d=dot(410,py); d.classList.add("hiddenLine");
+      nodes.push(n); lines.push(l); dots.push(d);
+
+      let gly=ly-5;
+      for(const sub of item[1]){
+        const sn=mk(sub,860,gly); sn.classList.add("hidden");
+        const sl=curve(720,ly+22,860,gly+22); sl.classList.add("hiddenLine");
+        const sd=dot(720,ly+22); sd.classList.add("hiddenLine");
+        nodes.push(sn); lines.push(sl); dots.push(sd);
+        gly+=58;
+      }
+      ly+=140;
+   }else{
+      const n=mk(item,560,ly); n.classList.add("hidden");
+      const l=curve(410,py,560,ly+22); l.classList.add("hiddenLine");
+      const d=dot(410,py); d.classList.add("hiddenLine");
+      nodes.push(n); lines.push(l); dots.push(d);
+      ly+=58;
+   }
+ }
+ p.open=false;
+ p.onclick=()=>{
+   p.open=!p.open;
+   nodes.forEach(x=>x.classList.toggle("hidden",!p.open));
+   lines.forEach(x=>x.classList.toggle("hiddenLine",!p.open));
+   dots.forEach(x=>x.classList.toggle("hiddenLine",!p.open));
+ }
+ groups.push({p,nodes,lines,dots});
+ y+=Math.max(240,ly-y+40);
+}
+function expandAll(){groups.forEach(g=>{g.p.open=true;g.nodes.forEach(x=>x.classList.remove("hidden"));g.lines.forEach(x=>x.classList.remove("hiddenLine"));g.dots.forEach(x=>x.classList.remove("hiddenLine"));})}
+function collapseAll(){groups.forEach(g=>{g.p.open=false;g.nodes.forEach(x=>x.classList.add("hidden"));g.lines.forEach(x=>x.classList.add("hiddenLine"));g.dots.forEach(x=>x.classList.add("hiddenLine"));})}
+let z=window.innerWidth<=480?0.55:window.innerWidth<=768?0.65:1;
+function apply(){c.style.transform=`scale(${z})`}
+function zin(){z=Math.min(1.5,z+.1);apply()}
+function zout(){z=Math.max(.35,z-.1);apply()}
+window.onload=apply;
+</script>
+</body>
+</html>
