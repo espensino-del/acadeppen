@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa Mental - Cinotecnia</title>
+
+<style>
+
+:root{
+ --bg:#000;
+ --fg:#fff;
+ --gold:#d9a900;
+ --box:#232323;
+ --line:#bfe9ff;
+}
+
+*{
+ box-sizing:border-box;
+}
+
+body{
+ margin:0;
+ background:var(--bg);
+ font-family:Arial,sans-serif;
+}
+
+header{
+ background:#fff;
+ text-align:center;
+ padding:10px;
+ border-bottom:3px solid var(--gold);
+}
+
+header img{
+ max-width:260px;
+ width:90%;
+}
+
+header h2{
+ margin:10px 0 0;
+ color:#000;
+ font-size:1.6rem;
+}
+
+.topbar{
+ padding:15px;
+ text-align:center;
+ background:#111;
+}
+
+.top{
+ background:var(--gold);
+ border:none;
+ padding:10px 16px;
+ border-radius:20px;
+ font-weight:bold;
+ cursor:pointer;
+ color:#111;
+}
+
+.toolbar{
+ display:flex;
+ justify-content:center;
+ gap:12px;
+ padding:10px;
+ background:#111;
+ position:sticky;
+ top:0;
+ z-index:10;
+}
+
+.toolbar button,
+.zoom button{
+
+ background:var(--gold);
+ border:none;
+ border-radius:20px;
+ padding:10px 16px;
+ font-weight:bold;
+ cursor:pointer;
+
+}
+
+#wrap{
+
+ overflow:auto;
+
+ height:calc(100vh - 170px);
+
+}
+
+#canvas{
+
+ position:relative;
+
+ min-width:2000px;
+
+ min-height:3400px;
+
+ transform-origin:top left;
+
+}
+
+svg{
+
+ position:absolute;
+
+ inset:0;
+
+ overflow:visible;
+
+}
+
+.node{
+
+ position:absolute;
+
+ background:var(--box);
+
+ color:#fff;
+
+ border-radius:14px;
+
+ padding:10px 14px;
+
+ transition:.3s;
+
+ cursor:pointer;
+
+}
+
+.root{
+
+ border:2px solid var(--gold);
+
+ font-weight:bold;
+
+}
+
+.leaf{
+
+ min-width:260px;
+
+ cursor:default;
+
+}
+
+.hidden{
+
+ opacity:0;
+
+ transform:scale(.9);
+
+ pointer-events:none;
+
+}
+
+path{
+
+ stroke:var(--line);
+
+ stroke-width:2;
+
+ fill:none;
+
+ transition:.3s;
+
+}
+
+.hiddenLine{
+
+ opacity:0;
+
+}
+
+circle{
+
+ fill:var(--gold);
+
+}
+
+.zoom{
+
+ position:fixed;
+
+ right:14px;
+
+ bottom:14px;
+
+ display:flex;
+
+ flex-direction:column;
+
+ gap:10px;
+
+}
+
+.zoom button{
+
+ width:46px;
+
+ height:46px;
+
+ border-radius:50%;
+
+ padding:0;
+
+ font-size:22px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png">
+
+<h2>Mapa Mental - Cinotecnia</h2>
+
+</header>
+
+<div class="topbar">
+
+<button class="top" onclick="location.href='../mapas.html'">
+
+Menu
+
+</button>
+
+</div>
+
+<div class="toolbar">
+
+<button onclick="expandAll()">
+
+Expandir tudo
+
+</button>
+
+<button onclick="collapseAll()">
+
+Recolher tudo
+
+</button>
+
+</div>
+
+<div id="wrap">
+
+<div id="canvas">
+
+<svg id="svg" width="2400" height="3600"></svg>
+
+</div>
+
+</div>
+
+<div class="zoom">
+
+<button onclick="zin()">+</button>
+
+<button onclick="zout()">−</button>
+
+</div>
+
+<script>
+
+const data=[
+["Conceitos Fundamentais",[
+    "Definição: Arte e Ciência",
+    "Binômio Homem-Cão",
+    "Termo K-9",
+    "Cão de Trabalho",
+    "Condutor Policial",
+    "Antropomorfismo"
+]],
+
+["Contexto Histórico",[
+    "Domesticação e Ancestralidade",
+    "Batalha da Maratona (490 a.C.)",
+    "Colonização e Fila Brasileiro",
+    "Primeira Guerra: Mercy Dogs",
+    "Segunda Guerra: Cães Anti-Tanque",
+    "Início no Brasil (1950-1964)"
+]],
+
+["Biologia e Capacidades",[
+    "Semelhança Genética com Lobos",
+    "Olfato: 300 milhões de receptores",
+    "Córtex Olfativo Superior"
+]],
+
+["Comportamento Canino",[
+    "Comunicação Não Verbal",
+    "Linguagem Corporal e Facial",
+    "Comportamentos Inatos e Adquiridos",
+    "Comportamentos Normais e Anormais"
+]],
+
+["Raças de Trabalho",[
+    "Pastor Belga Malinois",
+    "Pastor Alemão",
+    "Rottweiler",
+    "Labrador Retriever",
+    "Pastor Holandês"
+]],
+
+["Adestramento e Seleção",[
+    "Pilares: Indivíduo, Técnica, Condutor",
+    "Drive de Caça (Prey Drive)",
+    "Drive de Defesa",
+    "Flexibilidade Mental"
+]],
+
+["Emprego Operacional Prisional",[
+    "Efeito Dissuasório e Psicológico",
+    "Manutenção da Ordem e Disciplina",
+    "Grupos de Intervenção Rápida (GIR)",
+    "Detecção de Narcóticos e Armas",
+    "Detecção de Telefones Celulares"
+]]
+];
+
+const c=canvas,s=svg,groups=[];
+
+function mk(t,x,y,cls=""){
+ let d=document.createElement('div');
+ d.className='node '+cls;
+ d.textContent=t;
+ d.style.left=x+'px';
+ d.style.top=y+'px';
+ c.appendChild(d);
+ return d;
+}
+
+function curve(x1,y1,x2,y2){
+ let p=document.createElementNS("http://www.w3.org/2000/svg","path");
+ let dx=(x2-x1)*.45;
+ p.setAttribute("d",
+ `M ${x1} ${y1}
+  C ${x1+dx} ${y1},
+    ${x2-dx} ${y2},
+    ${x2} ${y2}`);
+ s.appendChild(p);
+ return p;
+}
+
+function dot(x,y){
+ let o=document.createElementNS("http://www.w3.org/2000/svg","circle");
+ o.setAttribute("cx",x);
+ o.setAttribute("cy",y);
+ o.setAttribute("r",4);
+ s.appendChild(o);
+ return o;
+}
+
+/* ---------- Nó raiz ---------- */
+
+mk("Cinotecnia",20,1450,"root");
+
+let rootX=170;
+let rootY=1475;
+
+let y=40;
+
+/* ---------- Montagem ---------- */
+
+for(const g of data){
+
+ const p=mk(g[0],240,y);
+
+ const py=y+22;
+
+ curve(rootX,rootY,240,py);
+
+ dot(240,py);
+
+ let nodes=[];
+
+ let lines=[];
+
+ let dots=[];
+
+ let ly=y-10;
+
+ for(const item of g[1]){
+
+      if(Array.isArray(item)){
+
+          const n=mk(item[0],560,ly);
+
+          n.classList.add("hidden");
+
+          const l=curve(410,py,560,ly+22);
+
+          l.classList.add("hiddenLine");
+
+          const d=dot(410,py);
+
+          d.classList.add("hiddenLine");
+
+          nodes.push(n);
+
+          lines.push(l);
+
+          dots.push(d);
+
+          let gly=ly-5;
+
+          for(const sub of item[1]){
+
+               const sn=mk(sub,860,gly);
+
+               sn.classList.add("hidden");
+
+               const sl=curve(720,ly+22,860,gly+22);
+
+               sl.classList.add("hiddenLine");
+
+               const sd=dot(720,ly+22);
+
+               sd.classList.add("hiddenLine");
+
+               nodes.push(sn);
+
+               lines.push(sl);
+
+               dots.push(sd);
+
+               gly+=58;
+
+          }
+
+          ly+=145;
+
+      }
+
+      else{
+
+          const n=mk(item,560,ly);
+
+          n.classList.add("hidden");
+
+          const l=curve(410,py,560,ly+22);
+
+          l.classList.add("hiddenLine");
+
+          const d=dot(410,py);
+
+          d.classList.add("hiddenLine");
+
+          nodes.push(n);
+
+          lines.push(l);
+
+          dots.push(d);
+
+          ly+=58;
+
+      }
+
+ }
+
+ p.open=false;
+
+ p.onclick=()=>{
+
+      p.open=!p.open;
+
+      nodes.forEach(x=>x.classList.toggle("hidden",!p.open));
+
+      lines.forEach(x=>x.classList.toggle("hiddenLine",!p.open));
+
+      dots.forEach(x=>x.classList.toggle("hiddenLine",!p.open));
+
+ }
+
+ groups.push({p,nodes,lines,dots});
+
+ y+=Math.max(240,ly-y+40);
+
+}
+
+/* ---------- Botões ---------- */
+
+function expandAll(){
+
+ groups.forEach(g=>{
+
+      g.p.open=true;
+
+      g.nodes.forEach(x=>x.classList.remove("hidden"));
+
+      g.lines.forEach(x=>x.classList.remove("hiddenLine"));
+
+      g.dots.forEach(x=>x.classList.remove("hiddenLine"));
+
+ });
+
+}
+
+function collapseAll(){
+
+ groups.forEach(g=>{
+
+      g.p.open=false;
+
+      g.nodes.forEach(x=>x.classList.add("hidden"));
+
+      g.lines.forEach(x=>x.classList.add("hiddenLine"));
+
+      g.dots.forEach(x=>x.classList.add("hiddenLine"));
+
+ });
+
+}
+
+/* ---------- Zoom ---------- */
+
+let z=
+
+window.innerWidth<=480?0.55:
+
+window.innerWidth<=768?0.65:
+
+1;
+
+function apply(){
+
+ c.style.transform=`scale(${z})`;
+
+}
+
+function zin(){
+
+ z=Math.min(1.5,z+.1);
+
+ apply();
+
+}
+
+function zout(){
+
+ z=Math.max(.35,z-.1);
+
+ apply();
+
+}
+
+window.onload=apply;
+
+</script>
+
+</body>
+
+</html>
