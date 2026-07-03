@@ -1,0 +1,1059 @@
+<!DOCTYPE html><html lang="pt-br"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>APH Prisional</title>
+<style>
+:root{--d:#d9a900}
+*{box-sizing:border-box}
+body{margin:0;background:#000;font-family:Segoe UI,Arial,sans-serif}
+.header{background:#fff;padding:18px;text-align:center}
+.logo img{max-width:320px;width:92%}
+h2{color:#333;margin:10px 0 4px}
+.container{max-width:760px;margin:auto;padding:18px}
+.progress{height:8px;background:#222;border-radius:999px;overflow:hidden;margin-bottom:18px}
+.bar{height:100%;width:0;background:var(--d);transition:.3s}
+.card{height:460px;perspective:1200px}
+.hidden{display:none}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;background:#fff;border-radius:28px;padding:28px;
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+text-align:center;backface-visibility:hidden;border-top:8px solid var(--d);
+box-shadow:0 10px 35px rgba(255,255,255,.08)}
+.back{transform:rotateY(180deg)}
+.badge{background:var(--d);color:#fff;padding:8px 16px;border-radius:999px;font-weight:700}
+.content{margin:26px 0;font-size:1.12rem;line-height:1.7;overflow:auto;max-height:280px}
+.tip{color:#666}
+.controls{display:flex;gap:14px;margin-top:18px}
+button{flex:1;background:#333;color:#fff;border:none;border-radius:16px;padding:15px;font-weight:700;cursor:pointer}
+.counter{text-align:center;color:#fff;margin-top:14px}
+@media(max-width:600px){.card{height:520px} .content{font-size:1.02rem}}
+
+.top{
+ background:var(--d);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+}
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+
+
+</style></head>
+<body>
+<div class="header">
+<div class="logo">
+<img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png">
+</div>
+<h2>Flashcards Interativos-APH Prisional</h2>
+
+</div>
+<div class="topbar">
+<button class="top" onclick="location.href='../cards.html'">Menu</button>
+</a>
+</div>
+
+<div class="container">
+
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Segundo a ONU, os direitos humanos são inerentes a todos os seres humanos, independentemente de quais condições?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Raça, sexo, nacionalidade, etnia, idioma, religião ou qualquer outra condição.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Quais são dois exemplos de direitos incluídos no conceito de direitos humanos pela ONU além da vida e liberdade?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Direito ao trabalho e à educação.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que significa dizer que o homem é a &#x27;fonte prioritária do Direito&#x27; no contexto dos direitos humanos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Significa que ele é portador de direitos fundamentais inalienáveis decorrentes de sua própria natureza.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual frase sintetiza a premissa de que a existência humana precede a posse de direitos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">&quot;Existo, logo tenho direitos&quot;.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Característica: Historicidade</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Os direitos humanos não surgiram todos de uma vez, mas são fruto de uma evolução histórica constante.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Característica: Universalidade</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Os direitos humanos destinam-se a todos os seres humanos, sem qualquer distinção.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual característica dos direitos humanos indica que eles podem sofrer limitações no caso concreto para se ajustarem a outros direitos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Relatividade.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que define a característica da Irrenunciabilidade dos direitos humanos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">O titular do direito não pode abrir mão dele, nem transferi-lo a outrem.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Característica: Imprescritibilidade</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Os direitos humanos não se perdem pelo decurso do tempo e podem ser exercidos a qualquer momento.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que significa a característica da Indivisibilidade dos direitos humanos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Significa que todos os direitos humanos formam um conjunto único e não podem ser usufruídos isoladamente.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual é a principal diferença entre Direitos Fundamentais e Direitos Humanos quanto ao plano de reconhecimento?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Direitos fundamentais são reconhecidos no plano interno (Constituições), enquanto direitos humanos são reconhecidos no plano internacional.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Historicamente, por que o Estado era considerado o grande violador de direitos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Porque promovia violações acobertado pela soberania nacional e pela jurisdição doméstica exclusiva.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">A soberania estatal, sob a ótica moderna dos direitos humanos, deve ser limitada por qual fator?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Pela proteção dos direitos humanos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual evento histórico impulsionou a criação de um sistema efetivo de proteção internacional de direitos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">A Segunda Guerra Mundial e o Regime Nazista.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Na execução penal, as pessoas presas possuem benefícios ou direitos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Pessoas presas possuem direitos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual é o conceito jurídico atribuído à Pessoa Privada de Liberdade (PPL) quanto à sua dignidade?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">A PPL tem o &quot;direito a ter direitos&quot;.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Por que a efetivação dos direitos humanos é considerada inconsistente com a realidade do sistema prisional brasileiro?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Porque o sistema é frequentemente excludente e desumanizado.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">No Rio Grande do Sul, qual grupo étnico-racial é identificado como principal vítima da vitimização no sistema prisional?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Negros e pardos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual é a missão institucional da Polícia Penal em relação às pessoas privadas de liberdade?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Promover a inclusão social dessas pessoas.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Em que data e local foi adotada a Declaração Universal dos Direitos Humanos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Em 10/12/1948, em Paris.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual documento é considerado o marco inicial do Direito Internacional dos Direitos Humanos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">A Declaração Universal dos Direitos Humanos (DUDH).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">A DUDH defende que o indivíduo é cidadão de seu país e também _____.</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Cidadão do mundo.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Quais três documentos formam a chamada &#x27;Carta Internacional de Direitos Humanos&#x27;?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">DUDH, Pacto Internacional sobre Direitos Civis e Políticos (PIDCP) e Pacto Internacional sobre Direitos Econômicos, Sociais e Culturais (PIDESC).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que estabelece o Artigo 5º da Declaração Universal dos Direitos Humanos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Que ninguém será submetido a tortura, nem a penas ou tratamentos cruéis, desumanos ou degradantes.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Segundo o Artigo 9º da DUDH, quais ações são proibidas em relação à detenção do indivíduo?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Ninguém pode ser arbitrariamente preso, detido ou exilado.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O Artigo 10º da DUDH garante o direito a que tipo de julgamento?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Um julgamento equitativo e público por um tribunal independente e imparcial.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual é a regra sobre a aplicação de penas mais graves estabelecida no Artigo 11 da DUDH?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Não será infligida pena mais grave do que a que era aplicável no momento em que o ato delituoso foi cometido.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Na Constituição Federal de 1988, a dignidade da pessoa humana é classificada como um _____.</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Fundamento da República.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que significa a dignidade humana ser o &#x27;parâmetro orientador das condutas estatais&#x27;?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Significa que toda a ordem jurídica deve ser relida para a proteção da pessoa.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual é a regra de aplicação das normas definidoras de direitos e garantias fundamentais segundo o Art. 5º, § 1º da CF/88?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Elas têm aplicação imediata.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O que estabelece o Art. 5º, § 2º da Constituição Federal sobre tratados internacionais de direitos humanos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Que os direitos neles reconhecidos não excluem outros direitos e têm aplicação no plano interno.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual princípio rege as relações internacionais da República Federativa do Brasil segundo o Art. 4º, II da CF/88?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">A prevalência dos direitos humanos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Como são qualificados os direitos das pessoas na CF/88 para impedir sua abolição, conforme o Art. 60, § 4º?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Como cláusulas pétreas.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual é o nome das regras mínimas das Nações Unidas para o tratamento de pessoas presas?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Regras de Mandela (2015).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Como são chamadas as regras das Nações Unidas específicas para o tratamento de mulheres presas?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Regras de Bangkok (2010).</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Em que ano foi promulgada a Declaração de Independência dos Estados Unidos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">1776.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual documento histórico de 1789 é citado como parte do conteúdo programático de direitos humanos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Declaração dos Direitos do Homem e do Cidadão.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O &#x27;Conjunto de Princípios para Proteção de Todas as Pessoas sob Qualquer Forma de Detenção ou Prisão&#x27; data de qual ano?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">1988.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Segundo o material, qual a justificativa para a prevalência da CF/88 em relação aos direitos humanos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">A necessidade de direitos durante a transição democrática e inovações jurídicas.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual o objetivo do Estado brasileiro definido no Art. 3º da Constituição Federal?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">A proteção da pessoa humana.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Onde estão positivados os direitos e garantias fundamentais no texto constitucional?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Logo no início, no Título II.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">A validade normativa e a aplicação de direitos na legislação brasileira dependem de fatores externos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Não, elas independem de outros fatores.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">No contexto da Polícia Penal, o que se entende por &#x27;sociabilidade violenta&#x27;?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">É um dos fatores que compõem o perfil e a realidade do público no sistema prisional gaúcho.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual a relação entre soberania estatal e proteção dos direitos humanos conforme a fundamentação histórica?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">A soberania não pode ser absoluta e deve ser limitada pela proteção dos direitos humanos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">De acordo com as Nações Unidas, os direitos humanos são inerentes a todos os seres humanos sem _____.</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Discriminação.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O direito à vida, à liberdade de opinião e ao trabalho são exemplos de direitos que todos possuem sem _____.</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Discriminação.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">A Declaração Universal de 1948 visa a proteção de todos os seres humanos independente de quaisquer _____.</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Condições.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O Pacto Internacional sobre Direitos Civis e Políticos entrou em vigor em qual ano?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">1976.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">A DUDH, o PIDCP e o PIDESC formam a _____.</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Carta Internacional de Direitos Humanos.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual característica impede que os direitos humanos sejam alienados ou transferidos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Inalienabilidade.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Os Direitos Fundamentais são protegidos na esfera _____, enquanto os Humanos na esfera _____.</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Interna / Internacional.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual é a fonte prioritária do Direito segundo a fundamentação teórica dos Direitos Humanos?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">O Homem.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">A dignidade da pessoa humana é considerada o parâmetro _____ das condutas estatais.</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Orientador.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">O catálogo de direitos da CF/88 é considerado aberto por permitir a inclusão de direitos provenientes de _____.</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Tratados internacionais.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Qual é o marco temporal da Convenção Contra Tortura citado no conteúdo programático?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">1941.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Os direitos das pessoas privadas de liberdade são considerados &#x27;benefícios&#x27;?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Não, são direitos necessários para assegurar uma vida digna.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">A dissociação entre noções de cidadania e o sistema prisional é alimentada por fatores como organizações criminosas e _____.</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Condição estrutural dos presídios.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Quantas pessoas estima-se que morreram no conflito da Segunda Guerra Mundial?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Cerca de 60 milhões de pessoas.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+<section class="card hidden">
+<div class="card-inner">
+<div class="face front">
+<span class="badge">PERGUNTA</span>
+<div class="content">Segundo o material, qual a importância de refletir sobre a perspectiva prisional dos direitos humanos para o servidor?</div>
+<div class="tip">Toque para virar</div>
+</div>
+
+<div class="face back">
+<span class="badge">RESPOSTA</span>
+<div class="content">Colaborar com o raciocínio crítico quanto aos direitos das pessoas privadas de liberdade.</div>
+<div class="tip">Toque para voltar</div>
+</div>
+</div>
+</section>
+
+
+<div class="controls">
+<button id="prev">⬅ Anterior</button>
+<button id="next">Próximo ➡</button>
+</div>
+
+<div class="counter">
+<span id="cur">1</span> / 59 cartões
+</div>
+
+</div>
+
+<script>
+const cards=[...document.querySelectorAll('.card')];
+let i=0;
+
+function upd(){
+cards.forEach((c,n)=>c.classList.toggle('hidden',n!==i));
+cur.textContent=i+1;
+bar.style.width=((i+1)/cards.length*100)+'%';
+}
+
+upd();
+
+cards.forEach(c=>c.onclick=()=>c.classList.toggle('flipped'));
+
+next.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i+1)%cards.length;
+upd();
+}
+
+prev.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i-1+cards.length)%cards.length;
+upd();
+}
+
+let sx=0;
+
+document.addEventListener('touchstart',e=>sx=e.changedTouches[0].screenX);
+
+document.addEventListener('touchend',e=>{
+let dx=e.changedTouches[0].screenX-sx;
+
+if(Math.abs(dx)>60){
+cards[i].classList.remove('flipped');
+i=dx<0?(i+1)%cards.length:(i-1+cards.length)%cards.length;
+upd();
+}
+});
+</script>
+
+</body>
+</html>
