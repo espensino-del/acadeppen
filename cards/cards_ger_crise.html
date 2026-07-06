@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flashcards - Polícia Penal RS</title>
+<style>
+:root{
+--azul:#005C95; --azul2:#0A6FAF; --dourado:#d9a900;
+--bg:#eef3f8; --texto:#1b2430;
+}
+*{box-sizing:border-box}
+body{
+margin:0;font-family:'Segoe UI',Roboto,Arial,sans-serif;
+background:#000000;
+min-height:100vh;color:var(--texto);
+}
+.header{padding:18px;text-align:center;color:#333;background:#ffffff;
+backdrop-filter:blur(8px);
+}
+.logo{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0 auto 8px auto;
+background:#ffffff;
+}
+.logo img{
+max-width:320px;
+width:90%;
+height:auto;
+display:block;
+}
+
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+ 
+.container{max-width:760px;margin:auto;padding:0 18px 30px}
+.progress{height:8px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;margin:20px 0 18px}
+.bar{height:100%;width:0;background:var(--dourado);transition:.3s}
+.card{height:430px;perspective:1200px}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{
+position:absolute;inset:0;background:#fff;border-radius:28px;
+padding:28px;backface-visibility:hidden;
+box-shadow:0 15px 45px rgba(0,0,0,.18);
+border-top:8px solid var(--dourado);
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+}
+.back{transform:rotateY(180deg)}
+.badge{
+background:var(--dourado);color:#fff;
+padding:8px 16px;border-radius:999px;
+font-weight:700;font-size:.85rem;letter-spacing:.08em;
+}
+.content{margin:28px 0;font-size:1.18rem;line-height:1.7;text-align:center;overflow:auto;max-height:250px}
+.tip{color:#6c7785;font-size:.92rem}
+.controls{display:flex;gap:14px;margin-top:18px}
+button{
+flex:1;border:none;padding:15px;border-radius:16px;
+background:#333333;color:#fff;font-weight:700;
+cursor:pointer;transition:.2s;
+}
+button:hover{transform:translateY(-2px)}
+.counter{text-align:center;color:#fff;margin-top:14px;font-weight:600}
+.hidden{display:none}
+@media(max-width:600px){
+.card{height:500px}
+.content{font-size:1.05rem}
+}
+
+.top{
+ background:var(--dourado);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+}
+
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo"><img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png" alt="Polícia Penal RS"></div><h2 style="color:#333;margin:8px 0 4px;">Flashcards Interativos - Gerenciamento de Crise em Prisões (GceP)</h2>
+</div>
+
+<div class="topbar">
+<button class="top" onclick="location.href='cards.html'">Menu</button>
+</div>
+
+<div class="container">
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+    <section class="card" data-i="0">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como as facções criminosas mantêm sua influência no sistema penitenciário mesmo com líderes presos?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Através de uma organização bem articulada que promove diversos crimes.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="1">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">No contexto institucional, o que a vivência de situações de crise evidencia?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A oportunidade de aprimorar o planejamento e as ações de capacitação.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="2">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais são os três aspectos relacionados aos conflitos prisionais que são discutidos na aula de GceP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Aspectos políticos, psicológicos e profissionais.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="3">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Segundo as estatísticas, em qual tipo de unidade prisional ocorre a maioria dos motins e tentativas de fuga?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Unidades de regime fechado.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="4">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Por que o regime fechado apresenta maiores índices de motins estatisticamente?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Devido ao cerceamento da liberdade ser mais efetivo nessas unidades.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="5">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é o objetivo geral da qualificação do servidor da Polícia Penal em GceP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Capacitá-lo a elaborar planos para evitar ou retomar o controle de crises.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="6">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Um dos objetivos específicos do GceP é incentivar a padronização de ações para qual tipo de resolução?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Resolução pacífica de situações críticas de forma técnica, legal e ética.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="7">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que o GceP busca minimizar no desfecho de crises?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Danos pessoais e patrimoniais.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="8">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em que ano a doutrina de Gerenciamento de Crise Policial iniciou-se no Brasil?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">1995.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="9">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quem são os autores precursores da doutrina de Gerenciamento de Crise Policial no Brasil?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Capitão Wanderley Mascarenhas e o PF Roberto das Chagas Monteiro.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="10">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Onde e quando se iniciou a doutrina específica de Gerenciamento de Crise em Prisões (GCeP)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Em 2003, na cidade de Joinville.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="11">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual evento histórico em São Paulo serviu como marco trágico para a evolução das doutrinas de intervenção?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O massacre do Carandiru em 1992.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="12">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">No evento do Carandiru em 1992, quantos internos morreram na intervenção ao pavilhão 9?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">111 mortos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="13">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">No contexto histórico da PCPA, o que ocorreu no Sanatório Partenon em 1983?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O resgate de Zezinho Valmirante.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="14">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual foi o desfecho trágico da rebelião na PEJ em 1988, que durou 29 horas?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A morte de 03 agentes.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="15">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">No resgate de &#x27;Topo Gigio&#x27; em 1985, qual foi a fatalidade registrada?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">02 agentes foram mortos dentro de um ônibus.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="16">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em 1987, quantos servidores foram dominados por internos no Motim do Instituto de Biotipologia Criminal?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">31 psicólogos, psiquiatras e estagiários.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="17">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que ocorreu em 1994 no Hospital Penitenciário do PCPA envolvendo Melara e outros detentos?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Uma fuga realizada em três veículos com reféns servidores e pacientes.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="18">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual agente foi vitimado durante o resgate de &#x27;Cafuringa&#x27; em 2005?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Agente Jair Fiorim.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="19">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a finalidade principal da Portaria Nº 018 de 2008?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Padronizar os procedimentos em situações de crise no sistema penal do RS.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="20">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais situações são legalmente consideradas crises pela Portaria 018/2008?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Fuga ou tentativa, incêndio, rebelião, motim, invasão e ataque à escolta.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="21">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">De acordo com a legislação de 2008, quem deve obrigatoriamente participar de cursos de qualificação em GceP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Todos os diretores e chefes de segurança.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="22">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a prioridade absoluta (primeiro objetivo) do Gerenciamento de Crise?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Preservar a vida.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="23">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais são as quatro prioridades do GceP em ordem de importância?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Preservar a vida, garantir a segurança da sociedade, restaurar a ordem e preservar o patrimônio.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="24">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a finalidade do Grupo de Ações Especiais (GAES) segundo o Art 1º de seu regulamento?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Manutenção da ordem e da disciplina nos estabelecimentos penais.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="25">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a competência exclusiva do GAES nas primeiras 48 horas de uma crise?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O gerenciamento de crises e negociação no sistema prisional.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="26">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Cite três fatores que contribuem para o surgimento de crises no ambiente prisional.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Superlotação, falta de infraestrutura básica e guerra de facções.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="27">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Diferencie &#x27;Prevenção&#x27; de &#x27;Antecipação&#x27; no contexto prisional.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Prevenção são rotinas (como revistas periódicas); antecipação é agir sobre uma ameaça específica descoberta (como um plano de fuga).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="28">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que define o &#x27;Primeiro Interventor&#x27; em uma crise?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O servidor que primeiro visualiza e comunica a ocorrência de uma situação crítica.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="29">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a primeira ação (3º passo) que o Primeiro Interventor deve realizar?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Acionar imediatamente o alarme para comunicação.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="30">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Por que o Primeiro Interventor não deve se retirar do local após a chegada da equipe de apoio?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Porque ele é parte importante do processo e possui informações iniciais críticas.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="31">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais informações sobre o &#x27;Ponto Crítico&#x27; o Primeiro Interventor deve tentar identificar?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Localização, tamanho, peculiaridades e condições de acesso tático.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="32">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que deve ser verificado pelo Primeiro Interventor em relação aos armamentos na crise?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A quantidade de armas, o tipo e a letalidade disponível com os perpetradores.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="33">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual característica deve ter a equipe que realiza escoltas para aumentar a segurança?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Deve ser uma equipe certa e padronizada.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="34">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O termo &#x27;POP&#x27; no contexto operacional prisional significa _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Plano Operacional Padrão</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="35">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A doutrina de Gerenciamento de Crise em Prisões (GCeP) teve sua primeira publicação em _____ no ano de 2014.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Belo Horizonte</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="36">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em 1999, o Estado foi condenado a pagar indenização de R$ 1 milhão por danos morais a qual servidor?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Ao ex-diretor do Hospital Penitenciário.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="37">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual agente da Polícia Penal perdeu a vida em 2021 durante uma escolta médica em Caxias do Sul?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Agente Clóvis Antônio Roman.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="38">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é o processo de identificar, obter e aplicar os recursos necessários para resolver uma situação crítica?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Gerenciamento de Crise.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="39">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A Portaria 018 determina que todo estabelecimento prisional contenha um _____ de acordo com suas características.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Plano de ação</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="40">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual instituição é responsável por providenciar cursos de formação relacionados ao GceP no RS?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">ACADEPPEN.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="41">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O resgate de detentos em 1994 envolveu o Hotel _____, onde houve confronto policial.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Plaza São Rafael</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="42">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quantos policiais participaram da intervenção no Carandiru em 1992?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">325 policiais.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="43">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A condição física e a _____ no ponto crítico são informações essenciais sobre os reféns.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Localização</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="44">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em 1987, Melara fugiu pela segunda vez de qual unidade prisional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">PASC (Penitenciária de Alta Segurança de Charqueadas).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="45">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que o Primeiro Interventor deve priorizar fazer nos primeiros minutos da crise?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Tentar acalmar todos os envolvidos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="46">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">As revistas de visitantes são consideradas exemplos de ações de _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Prevenção</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="47">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">As revistas de celas motivadas por informações de inteligência sobre um túnel são exemplos de _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Antecipação</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="48">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a definição de &#x27;crise&#x27; no contexto da segurança pública?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Um evento crucial que ameaça a vida ou a ordem, exigindo resposta imediata e coordenada.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="49">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quem detém a autoridade excepcional para delegar funções do GAES a outros servidores?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O Diretor do DSEP.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+
+<div class="controls">
+<button id="prev">⬅ Anterior</button>
+<button id="next">Próximo ➡</button>
+</div>
+
+<div class="counter"><span id="cur">1</span> / 50 cartões</div>
+</div>
+
+<script>
+const cards=[...document.querySelectorAll('.card')];
+let i=0;
+
+function update(){
+cards.forEach((c,n)=>c.classList.toggle('hidden',n!==i));
+document.getElementById('cur').textContent=i+1;
+document.getElementById('bar').style.width=((i+1)/cards.length*100)+'%';
+}
+update();
+
+cards.forEach(c=>c.onclick=()=>c.classList.toggle('flipped'));
+
+next.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i+1)%cards.length; update();
+};
+prev.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i-1+cards.length)%cards.length; update();
+};
+</script>
+</body></html>
