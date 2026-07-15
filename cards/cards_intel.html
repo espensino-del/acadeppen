@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flashcards - Polícia Penal RS</title>
+<style>
+:root{
+--azul:#005C95; --azul2:#0A6FAF; --dourado:#d9a900;
+--bg:#eef3f8; --texto:#1b2430;
+}
+*{box-sizing:border-box}
+body{
+margin:0;font-family:'Segoe UI',Roboto,Arial,sans-serif;
+background:#000000;
+min-height:100vh;color:var(--texto);
+}
+.header{padding:18px;text-align:center;color:#333;background:#ffffff;
+backdrop-filter:blur(8px);
+}
+.logo{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0 auto 8px auto;
+background:#ffffff;
+}
+.logo img{
+max-width:320px;
+width:90%;
+height:auto;
+display:block;
+}
+
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+ 
+.container{max-width:760px;margin:auto;padding:0 18px 30px}
+.progress{height:8px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;margin:20px 0 18px}
+.bar{height:100%;width:0;background:var(--dourado);transition:.3s}
+.card{height:430px;perspective:1200px}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{
+position:absolute;inset:0;background:#fff;border-radius:28px;
+padding:28px;backface-visibility:hidden;
+box-shadow:0 15px 45px rgba(0,0,0,.18);
+border-top:8px solid var(--dourado);
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+}
+.back{transform:rotateY(180deg)}
+.badge{
+background:var(--dourado);color:#fff;
+padding:8px 16px;border-radius:999px;
+font-weight:700;font-size:.85rem;letter-spacing:.08em;
+}
+.content{margin:28px 0;font-size:1.18rem;line-height:1.7;text-align:center;overflow:auto;max-height:250px}
+.tip{color:#6c7785;font-size:.92rem}
+.controls{display:flex;gap:14px;margin-top:18px}
+button{
+flex:1;border:none;padding:15px;border-radius:16px;
+background:#333333;color:#fff;font-weight:700;
+cursor:pointer;transition:.2s;
+}
+button:hover{transform:translateY(-2px)}
+.counter{text-align:center;color:#fff;margin-top:14px;font-weight:600}
+.hidden{display:none}
+@media(max-width:600px){
+.card{height:500px}
+.content{font-size:1.05rem}
+}
+
+.top{
+ background:var(--dourado);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+}
+
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo"><img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png" alt="Polícia Penal RS"></div><h2 style="color:#333;margin:8px 0 4px;">Flashcards Interativos - Inteligência Penitenciária</h2>
+</div>
+
+<div class="topbar">
+<button class="top" onclick="location.href='cards.html'">Menu</button>
+</div>
+
+<div class="container">
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+    <section class="card" data-i="0">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como a apostila define a &#x27;Atividade de Inteligência&#x27;?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O exercício permanente e sistemático de ações especializadas para produção e salvaguarda de conhecimentos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="1">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é o objetivo essencial da Atividade de Inteligência para os gestores?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Assessorar a tomada de decisão para prever, prevenir, neutralizar e reprimir ameaças e atos criminosos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="2">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em 1927, qual órgão foi criado no Brasil para coordenar informações de defesa nacional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Conselho de Defesa Nacional (CDN).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="3">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual lei instituiu o Sistema Brasileiro de Inteligência (SISBIN) em 1999?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Lei nº 9.883.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="4">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual agência foi estabelecida pela Lei nº 9.883/1999 como o órgão central do SISBIN?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Agência Brasileira de Inteligência (ABIN).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="5">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Atualmente, a ABIN está diretamente subordinada a qual órgão?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Ministério da Casa Civil.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="6">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A Lei nº 13.869/2019, que instituiu a _____, estabelece diretrizes de privacidade que afetam as operações de inteligência.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Lei de Proteção aos Dados Pessoais</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="7">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em que ano teve início a Atividade de Inteligência no sistema prisional gaúcho?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">2003.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="8">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual portaria criou a Divisão de Inteligência Penitenciária (DIPEN) e o SIPEN em 2015?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Portaria nº 105/2015.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="9">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A partir de qual ano a Divisão de Inteligência Penitenciária do RS passou a ter status de Departamento?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">2024.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="10">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">No sistema de inteligência da PP/RS, o Departamento de Inteligência é subordinado diretamente ao _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Superintendente</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="11">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">As Agências Regionais de Inteligência da PP/RS são subordinadas a quais autoridades?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Delegados Penitenciários das DRPPs.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="12">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A quem são subordinadas as Agências Locais de Inteligência nos estabelecimentos penais?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Diretores de estabelecimento vinculados às DRPPs.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="13">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A Atividade de Inteligência é dividida em quais dois ramos principais?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Inteligência e Contrainteligência.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="14">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual setor auxilia e atua simultaneamente nos ramos de inteligência e contrainteligência?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Setor de Operações.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="15">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Ramo: Inteligência</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Definição: Atividade de obtenção, análise e disseminação de conhecimentos para subsidiar o processo decisório e a segurança do Estado.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="16">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Ramo: Contrainteligência</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Definição: Atividade que visa prevenir, detectar, obstruir e neutralizar ações adversas que constituam ameaças.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="17">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a função do setor de Operações na atividade de inteligência?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Executar ações e técnicas operacionais para busca de dados e neutralização de ações adversas.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="18">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que é a disciplina de inteligência denominada HUMINT?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Inteligência proveniente de dados obtidos por fontes humanas.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="19">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual disciplina de inteligência analisa imagens fixas ou em vídeo obtidas por radares ou sensores térmicos?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">IMINT (Inteligência de Imagens).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="20">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A disciplina _____ foca na análise de informações geográficas para representar de forma georreferenciada atividades na superfície terrestre.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">GEOINT (Inteligência Geográfica)</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="21">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que caracteriza a disciplina de inteligência MASINT?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Análise científica de dados de fontes emissoras para identificar características específicas (assinaturas) de alvos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="22">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A disciplina _____ baseia-se em informações coletadas de fontes públicas, como internet, jornais e televisão.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">OSINT (Inteligência de Fontes Abertas)</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="23">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que é a disciplina de inteligência SIGINT?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Toda inteligência derivada do espectro eletromagnético, subdividida em Comunicações e Eletrônica.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="24">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual disciplina de inteligência lida com ameaças digitais e segurança de redes no espaço cibernético?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">CYBINT (Inteligência Cibernética).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="25">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A disciplina _____ foca no resultado da análise de dados sanitários, biocientíficos e epidemiológicos.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">MEDINT (Inteligência Sanitária)</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="26">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O profissional de inteligência deve submeter-se obrigatoriamente a quais princípios constitucionais?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Princípios da Administração Pública (L.I.M.P.E.).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="27">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Princípio: Compartimentação</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Definição: Acesso à informação restrito apenas a quem necessita do conhecimento, independente da hierarquia.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="28">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual princípio de inteligência exige isenção de ideias preconcebidas, tendenciosas ou distorcidas?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Imparcialidade.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="29">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O princípio da _____ determina que o conhecimento deve ser produzido em prazo que permita seu melhor aproveitamento.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Oportunidade</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="30">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual princípio visa preservar o órgão, a atividade, seus integrantes e suas ações?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Sigilo.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="31">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais são as duas funções essenciais diretamente envolvidas na produção do conhecimento?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Analistas e Agentes.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="32">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual profissional de inteligência foca na identificação de padrões de comportamento e mapeamento de lideranças criminosas?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Analista.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="33">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a principal responsabilidade do Agente de inteligência no Ciclo de Produção de Conhecimento?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Cumprir ações de busca a fim de obter dados negados.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="34">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como regra geral, por que os profissionais de inteligência não executam prisões ou ações ostensivas?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Para preservar a segurança dos integrantes e garantir o sigilo e a compartimentação.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="35">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Para a Atividade de Inteligência, o que é &#x27;Conhecimento&#x27;?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O significado dos dados tratados de acordo com os objetivos da inteligência.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="36">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como é classificado o dado que necessita de credenciamento para ser acessado?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Dado Protegido.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="37">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que é um &#x27;Dado Negado ou Restrito&#x27;?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Aquele que exige uma operação de busca para ser obtido.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="38">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a diferença fundamental entre informação e conhecimento na inteligência?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Informação é um conjunto de dados organizados</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="39">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais são as quatro fases da Metodologia da Produção do Conhecimento (MPC)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Planejamento, Coleta e busca, Processamento e Difusão.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="40">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual fase do MPC envolve a reunião operacional de dados brutos a partir de diversas fontes?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Coleta e busca.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="41">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é o nome do documento externo padronizado utilizado para transmitir conhecimentos na atividade de inteligência?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Relatório de Inteligência (RELINT).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="42">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais são os quatro tipos de conhecimento que podem ser transmitidos em um RELINT?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Informes, Informações, Apreciações e Estimativas.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="43">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que caracteriza a &#x27;Coleta Secundária&#x27; nas ações de inteligência?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Desenvolvimento de ações por meio de acesso autorizado a bancos de dados protegidos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="44">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a finalidade das &#x27;Ações de Busca&#x27; realizadas pelo ELO?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Reunir dados negados através de procedimentos e medidas operacionais.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="45">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Ação de Busca: Desinformação</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Definição: Ação que visa induzir alvos a erros, orientando-os a realizar um comportamento específico.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="46">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como se define a &#x27;Infiltração Penitenciária&#x27; como ação de busca?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Colocação de um agente de inteligência junto ao alvo para obter dados.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="47">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O termo &#x27;RECON&#x27; refere-se a qual ação de busca?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Reconhecimento do ambiente operacional ou identificação de alvos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="48">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual ação de busca visa manter alvos sob observação para levantar rotinas, contatos e meios de transporte?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Vigilância.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="49">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">No contexto das operações, o que é o &#x27;Ambiente Operacional&#x27;?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O local físico onde a operação será desenvolvida.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="50">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Na inteligência, o &#x27;Alvo&#x27; de uma operação é obrigatoriamente uma pessoa?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Não, pode ser um veículo, residência, assunto ou objeto.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="51">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que significa a sigla &#x27;ELO&#x27; em operações de inteligência?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Elemento de Operações (o setor responsável pelo planejamento e execução das buscas).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="52">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a diferença entre um &#x27;Colaborador&#x27; e um &#x27;Informante&#x27;?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Colaboradores criam facilidades em virtude de suas atribuições</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="53">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual técnica operacional (TOI) consiste em modificar a aparência do agente para adequá-lo a uma &#x27;estória-cobertura&#x27;?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Disfarce.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="54">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">TOI: OMD</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Definição: Observação, Memorização e Descrição exata de pessoas, objetos e locais para identificação futura.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="55">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A Contrainteligência atua por meio de quais dois segmentos ou campos de atuação?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Segurança Orgânica (SEGOR) e Segurança Ativa (SEGAT).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="56">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é o foco principal da Segurança Orgânica (SEGOR)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Proteger os ativos (recursos humanos, materiais, informações e instalações) do sistema.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="57">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que caracteriza a Segurança Ativa (SEGAT)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Ações preditivas para detectar, identificar e neutralizar ameaças (ex: contraespionagem).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="58">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Ameaça: Sabotagem</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Definição: Ação deliberada para destruir ou comprometer equipamentos, instalações ou sistemas logísticos do Estado.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="59">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual organização criminosa gaúcha originou-se na década de 1980 sob o nome de &#x27;Falange Gaúcha&#x27;?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Os Manos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="60">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que define o &#x27;Conglomerado ANTIBALA&#x27; no mapa do crime gaúcho?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Uma união de diversas facções que têm em comum apenas a oposição à facção Bala na Cara.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="61">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual facção possui forte base regional no sul do estado (Pelotas e Rio Grande)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Os Taura.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="62">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O termo &#x27;Abertos&#x27; refere-se a quais tipos de grupos criminosos?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Dissidências ou criminosos independentes que buscam autonomia frente às grandes organizações.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+
+<div class="controls">
+<button id="prev">⬅ Anterior</button>
+<button id="next">Próximo ➡</button>
+</div>
+
+<div class="counter"><span id="cur">1</span> / 63 cartões</div>
+</div>
+
+<script>
+const cards=[...document.querySelectorAll('.card')];
+let i=0;
+
+function update(){
+cards.forEach((c,n)=>c.classList.toggle('hidden',n!==i));
+document.getElementById('cur').textContent=i+1;
+document.getElementById('bar').style.width=((i+1)/cards.length*100)+'%';
+}
+update();
+
+cards.forEach(c=>c.onclick=()=>c.classList.toggle('flipped'));
+
+next.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i+1)%cards.length; update();
+};
+prev.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i-1+cards.length)%cards.length; update();
+};
+</script>
+</body></html>
