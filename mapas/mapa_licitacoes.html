@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa Mental - Licitações, Contratos e Convênios</title>
+<style>
+:root{
+ --bg:#000; --fg:#fff; --gold:#d9a900;
+ --box:#232323; --line:#bfe9ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,sans-serif}
+header{background:#fff;text-align:center;padding:10px;border-bottom:3px solid var(--gold)}
+header img{max-width:260px;width:90%}
+header h2{margin:10px 0 0;color:#000;font-size:1.6rem}
+.toolbar{display:flex;justify-content:center;gap:12px;padding:10px;background:#111;position:sticky;top:0;z-index:10}
+.toolbar button,.zoom button{background:var(--gold);border:none;border-radius:20px;padding:10px 16px;font-weight:bold;cursor:pointer}
+#wrap{overflow:auto;height:calc(100vh - 170px);cursor:grab;-webkit-overflow-scrolling:touch}
+#wrap.dragging{cursor:grabbing;user-select:none}
+#canvas{position:relative;min-width:1700px;min-height:4000px;transform-origin:top left}
+svg{position:absolute;inset:0;overflow:visible}
+.node{position:absolute;background:var(--box);color:#fff;border-radius:14px;padding:10px 14px;transition:.3s;cursor:pointer;white-space:nowrap}
+.root{border:2px solid var(--gold);font-weight:bold}
+.leaf{min-width:260px;cursor:default}
+.hidden{opacity:0;transform:scale(.9);pointer-events:none}
+path{stroke:var(--line);stroke-width:2;fill:none;transition:.3s}
+.hiddenLine{opacity:0}
+circle{fill:var(--gold)}
+.toggle{
+ position:absolute;width:24px;height:24px;border-radius:50%;
+ background:#3a3a3a;color:var(--line);
+ display:flex;align-items:center;justify-content:center;
+ font-size:14px;font-weight:bold;cursor:pointer;user-select:none;
+ transition:.3s;
+}
+.toggle:hover{background:var(--gold);color:#111}
+.zoom{position:fixed;right:14px;bottom:14px;display:flex;flex-direction:column;gap:10px}
+.zoom button{width:46px;height:46px;border-radius:50%;padding:0;font-size:22px}
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+.top{
+ background:var(--gold);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+}
+</style>
+</head>
+<body>
+<header>
+<img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png">
+<h2>Mapa mental - Licitações, Contratos e Convênios</h2>
+</header>
+<div class="topbar">
+<button class="top" onclick="location.href='../mapas.html'">Menu</button>
+</div>
+
+<div class="toolbar">
+<button onclick="expandAll()">Expandir tudo</button>
+<button onclick="collapseAll()">Recolher tudo</button>
+</div>
+
+<div id="wrap"><div id="canvas"><svg id="svg" width="1700" height="4000"></svg></div></div>
+<div class="zoom"><button onclick="zin()">+</button><button onclick="zout()">−</button></div>
+
+<script>
+const rawData=[
+["Fundamentação",["Conceito: Seleção da melhor proposta","Base Constitucional: Art. 22 e 37 CF","Base Legal: Lei 14.133/21","Regulação Estadual: Decretos e Instruções"]],
+["Objetivos",["Seleção vantajosa","Isonomia e competição","Evitar sobrepreço","Desenvolvimento sustentável"]],
+["Princípios Chave",["Planejamento","Segregação de funções","Transparência","Legalidade e Moralidade"]],
+["Fase Interna (Preparatória)",[
+  ["Documentos Essenciais",["PAC (Plano Anual)","DFD (Demanda)","ETP (Estudo Técnico)","TR (Termo de Referência)","Edital (Fim da fase)"]],
+  ["Fluxo Institucional",["Unidade Prisional","DPR (Departamento Regional)","DA (Departamento Administrativo)"]],
+  ["Estimativa de Preços",["Painel de preços/PNCP","Contratações similares","Notas fiscais eletrônicas","Pesquisa direta (Fornecedores)"]]
+]],
+["Fase Externa",["Publicação do Edital","Classificatória (Julgamento)","Habilitação (Documental)","Homologação (Autoridade Superior)"]],
+["Contratação Direta",[
+  ["Dispensa (Art. 75)",["Rol Taxativo","Baixo Valor (<100k ou <50k)","Emergência ou Calamidade"]],
+  ["Inexigibilidade (Art. 74)",["Rol Exemplificativo","Fornecedor Exclusivo","Serviços Técnicos Especializados","Locação de Imóvel específico"]]
+]],
+["Modalidades e Contratos",[
+  ["Modalidades",["Pregão","Concorrência","Concurso","Leilão","Diálogo Competitivo"]],
+  ["Contratos",["Vigência (Até 5 anos)","Prorrogação (Até 10 anos)","Geração de Receita (Cantinas)"]]
+]]
+];
+
+const MOD_X=300, ITEM_X=700, SUB_X=1250;
+const LEAF_GAP=58, SUB_ITEM_GAP=58, GROUP_MIN_GAP=240;
+const c=canvas, s=svg, svgNS="http://www.w3.org/2000/svg";
+const allControls=[];
+
+function mk(t,x,y,cls=""){
+ let d=document.createElement('div');
+ d.className='node '+cls;
+ d.textContent=t;
+ d.style.left=x+'px'; d.style.top=y+'px';
+ c.appendChild(d);
+ return d;
+}
+function mkToggle(anchor,symbol){
+ let b=document.createElement('div');
+ b.className='toggle';
+ b.textContent=symbol;
+ b.style.left=(anchor.x+8)+'px'; b.style.top=(anchor.y-12)+'px';
+ c.appendChild(b);
+ return b;
+}
+function edgeRight(node){ return {x: node.offsetLeft+node.offsetWidth, y: node.offsetTop+node.offsetHeight/2}; }
+function edgeLeft(node){ return {x: node.offsetLeft, y: node.offsetTop+node.offsetHeight/2}; }
+function curve(p1,p2){
+ let p=document.createElementNS(svgNS,"path");
+ let dx=(p2.x-p1.x)*.45;
+ p.setAttribute("d",`M ${p1.x} ${p1.y} C ${p1.x+dx} ${p1.y}, ${p2.x-dx} ${p2.y}, ${p2.x} ${p2.y}`);
+ s.appendChild(p);
+ return p;
+}
+function dot(pt){
+ let o=document.createElementNS(svgNS,"circle");
+ o.setAttribute("cx",pt.x); o.setAttribute("cy",pt.y); o.setAttribute("r",4);
+ s.appendChild(o);
+ return o;
+}
+
+const root=mk("Licitações e Contratos PPRS",20,1960,"root");
+const rootToggle=mkToggle(edgeRight(root),'<');
+rootToggle.style.cursor='default';
+
+let y=40;
+for(const g of rawData){
+ const p=mk(g[0],MOD_X,y);
+ const pRight=edgeRight(p), pLeft=edgeLeft(p);
+ curve(edgeRight(root),pLeft); dot(pLeft);
+
+ let nodes=[],lines=[],dots=[];
+ const subControls=[];
+ let ly=y-10;
+
+ for(const item of g[1]){
+   if(Array.isArray(item)){
+     const n=mk(item[0],ITEM_X,ly); n.classList.add("hidden");
+     const nLeft=edgeLeft(n);
+     const l=curve(pRight,nLeft); l.classList.add("hiddenLine");
+     const d=dot(nLeft); d.classList.add("hiddenLine");
+     nodes.push(n); lines.push(l); dots.push(d);
+
+     const nRight=edgeRight(n);
+     const tgItem=mkToggle(nRight,'>'); tgItem.classList.add("hidden");
+     nodes.push(tgItem);
+
+     let gly=ly-5;
+     const subNodes=[],subLines=[],subDots=[];
+     for(const sub of item[1]){
+       const sn=mk(sub,SUB_X,gly); sn.classList.add("hidden");
+       const snLeft=edgeLeft(sn);
+       const sl=curve(nRight,snLeft); sl.classList.add("hiddenLine");
+       const sd=dot(snLeft); sd.classList.add("hiddenLine");
+       subNodes.push(sn); subLines.push(sl); subDots.push(sd);
+       gly+=SUB_ITEM_GAP;
+     }
+     n.subOpen=false;
+     const setSubOpen=(state)=>{
+       n.subOpen=state;
+       subNodes.forEach(x=>x.classList.toggle("hidden",!state));
+       subLines.forEach(x=>x.classList.toggle("hiddenLine",!state));
+       subDots.forEach(x=>x.classList.toggle("hiddenLine",!state));
+       tgItem.textContent = state? '<':'>';
+     };
+     n.onclick=()=>setSubOpen(!n.subOpen);
+     tgItem.onclick=(e)=>{e.stopPropagation();setSubOpen(!n.subOpen);};
+     subControls.push(setSubOpen);
+     allControls.push(setSubOpen);
+     ly+=Math.max(140, item[1].length*58+40);
+   }else{
+     const n=mk(item,ITEM_X,ly); n.classList.add("hidden");
+     const nLeft=edgeLeft(n);
+     const l=curve(pRight,nLeft); l.classList.add("hiddenLine");
+     const d=dot(nLeft); d.classList.add("hiddenLine");
+     nodes.push(n); lines.push(l); dots.push(d);
+     ly+=LEAF_GAP;
+   }
+ }
+
+ const tgGroup=mkToggle(pRight,'>');
+ p.open=false;
+ const setGroupOpen=(state)=>{
+   p.open=state;
+   nodes.forEach(x=>x.classList.toggle("hidden",!state));
+   lines.forEach(x=>x.classList.toggle("hiddenLine",!state));
+   dots.forEach(x=>x.classList.toggle("hiddenLine",!state));
+   tgGroup.textContent = state? '<':'>';
+   if(!state){ subControls.forEach(f=>f(false)); }
+ };
+ p.onclick=()=>setGroupOpen(!p.open);
+ tgGroup.onclick=(e)=>{e.stopPropagation();setGroupOpen(!p.open);};
+ allControls.push(setGroupOpen);
+
+ y+=Math.max(GROUP_MIN_GAP, ly-y+40);
+}
+
+function expandAll(){ allControls.forEach(f=>f(true)); }
+function collapseAll(){ allControls.forEach(f=>f(false)); }
+
+let z=window.innerWidth<=480?0.22:window.innerWidth<=768?0.28:0.35;
+function apply(){c.style.transform=`scale(${z})`}
+function zin(){z=Math.min(1.5,z+.1);apply()}
+function zout(){z=Math.max(.15,z-.1);apply()}
+window.onload=apply;
+
+/* Arrastar o mapa com o mouse (desktop). No celular/tablet o toque já
+   rola nativamente o container, então nenhum código extra é necessário ali. */
+(function(){
+ const wrapEl=document.getElementById('wrap');
+ let isDown=false, dragged=false, startX=0, startY=0, scrollLeft=0, scrollTop=0;
+
+ wrapEl.addEventListener('mousedown',(e)=>{
+   isDown=true; dragged=false;
+   wrapEl.classList.add('dragging');
+   startX=e.pageX; startY=e.pageY;
+   scrollLeft=wrapEl.scrollLeft; scrollTop=wrapEl.scrollTop;
+ });
+ window.addEventListener('mouseup',()=>{
+   isDown=false;
+   wrapEl.classList.remove('dragging');
+ });
+ window.addEventListener('mousemove',(e)=>{
+   if(!isDown) return;
+   e.preventDefault();
+   const dx=e.pageX-startX, dy=e.pageY-startY;
+   if(Math.abs(dx)>6||Math.abs(dy)>6) dragged=true;
+   wrapEl.scrollLeft=scrollLeft-dx;
+   wrapEl.scrollTop=scrollTop-dy;
+ });
+ // Evita que o "clique" disparado ao soltar o mouse após um arraste
+ // acione o expandir/recolher dos nós.
+ wrapEl.addEventListener('click',(e)=>{
+   if(dragged){ e.stopPropagation(); e.preventDefault(); dragged=false; }
+ },true);
+})();
+</script>
+</body>
+</html>
