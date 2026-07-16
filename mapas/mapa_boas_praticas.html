@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa Mental - Boas Práticas-VTR</title>
+<style>
+:root{
+ --bg:#000; --fg:#fff; --gold:#d9a900;
+ --box:#232323; --line:#bfe9ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,sans-serif}
+header{background:#fff;text-align:center;padding:10px;border-bottom:3px solid var(--gold)}
+header img{max-width:260px;width:90%}
+header h2{margin:10px 0 0;color:#000;font-size:1.6rem}
+.toolbar{display:flex;justify-content:center;gap:12px;padding:10px;background:#111;position:sticky;top:0;z-index:10}
+.toolbar button,.zoom button{background:var(--gold);border:none;border-radius:20px;padding:10px 16px;font-weight:bold;cursor:pointer}
+#wrap{overflow:auto;height:calc(100vh - 170px);cursor:grab;-webkit-overflow-scrolling:touch}
+#wrap.dragging{cursor:grabbing;user-select:none}
+#canvas{position:relative;min-width:1700px;min-height:3200px;transform-origin:top left}
+svg{position:absolute;inset:0;overflow:visible}
+.node{position:absolute;background:var(--box);color:#fff;border-radius:14px;padding:10px 14px;transition:.3s;cursor:pointer;white-space:nowrap}
+.root{border:2px solid var(--gold);font-weight:bold}
+.leaf{min-width:260px;cursor:default}
+.hidden{opacity:0;transform:scale(.9);pointer-events:none}
+path{stroke:var(--line);stroke-width:2;fill:none;transition:.3s}
+.hiddenLine{opacity:0}
+circle{fill:var(--gold)}
+.toggle{
+ position:absolute;width:24px;height:24px;border-radius:50%;
+ background:#3a3a3a;color:var(--line);
+ display:flex;align-items:center;justify-content:center;
+ font-size:14px;font-weight:bold;cursor:pointer;user-select:none;
+ transition:.3s;
+}
+.toggle:hover{background:var(--gold);color:#111}
+.zoom{position:fixed;right:14px;bottom:14px;display:flex;flex-direction:column;gap:10px}
+.zoom button{width:46px;height:46px;border-radius:50%;padding:0;font-size:22px}
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+.top{
+ background:var(--gold);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+}
+</style>
+</head>
+<body>
+<header>
+<img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png">
+<h2>Mapa mental - Boas Práticas na Utilização de VTR</h2>
+</header>
+<div class="topbar">
+<button class="top" onclick="location.href='../mapas.html'">Menu</button>
+</div>
+
+<div class="toolbar">
+<button onclick="expandAll()">Expandir tudo</button>
+<button onclick="collapseAll()">Recolher tudo</button>
+</div>
+
+<div id="wrap"><div id="canvas"><svg id="svg" width="1700" height="3200"></svg></div></div>
+<div class="zoom"><button onclick="zin()">+</button><button onclick="zout()">−</button></div>
+
+<script>
+const rawData=[
+["Legislação e Normas",["Código de Trânsito Brasileiro (CTB)","Decreto Estadual 55.985/2021","Instrução Normativa 07/2023"]],
+["Prerrogativas e Prioridades",["Livre circulação, parada e estacionamento","Serviços de urgência e policiamento","Dispositivos de alarme e luz intermitente",
+  ["Regras de Segurança",["Velocidade reduzida em cruzamentos","Uso obrigatório de cinto de segurança","Obediência a agentes de trânsito","Proibido ultrapassar sem visibilidade"]]
+]],
+["Atores e Deveres",[
+  ["Gestor de Frota",["Acompanhar consumo e quilometragem","Gerir cadastros e desativações","Avaliar eficiência e custos","Controlar o Diário de Bordo"]],
+  ["Condutor",["Inspecionar o veículo e ferramentas","Zelar pela documentação e pneus","Preencher Diário de Bordo",
+    ["Abastecimento",["Conferir quilometragem e litros","Verificar tipo de combustível","Validar valores da transação"]]
+  ]],
+  ["Usuário",["Uso exclusivo para serviço público","Preservação do patrimônio","Conduta moral e disciplinada"]]
+]],
+["Categorias de Veículos",["Representação (Governador e Secretários)","Administrativos (Transporte de materiais)",
+  ["Especiais",["Patrulhamento e policiamento","Transporte de presos","UTI móvel e ambulância","Combate a incêndio e resgate"]]
+]],
+["Proibições e Restrições",["Transporte de familiares ou estranhos","Uso em lazer ou passeios","Uso em finais de semana (salvo exceção)","Guarda em garagem residencial (sem autorização)"]],
+["Infrações e Manutenção",[
+  ["Infrações e Acidentes",["Apurar autoria via sindicância","Ressarcimento de multas e danos","Identificação obrigatória do condutor"]],
+  ["Manutenção",["Obrigatoriedade de 3 orçamentos","Exceção para casos de emergência","Relatórios constantes de reparos"]]
+]]
+];
+
+const LEVEL_X=[20,340,780,1260,1780];
+const LEAF_GAP=58, GROUP_GAP_UNITS=2, Y_START=40;
+const c=canvas, s=svg, svgNS="http://www.w3.org/2000/svg";
+const allControls=[];
+let leafCounter=0;
+
+function mk(t,x,y,cls=""){
+ let d=document.createElement('div');
+ d.className='node '+cls;
+ d.textContent=t;
+ d.style.left=x+'px'; d.style.top=y+'px';
+ c.appendChild(d);
+ return d;
+}
+function mkToggle(anchor,symbol){
+ let b=document.createElement('div');
+ b.className='toggle';
+ b.textContent=symbol;
+ b.style.left=(anchor.x+8)+'px'; b.style.top=(anchor.y-12)+'px';
+ c.appendChild(b);
+ return b;
+}
+function edgeRight(node){ return {x: node.offsetLeft+node.offsetWidth, y: node.offsetTop+node.offsetHeight/2}; }
+function edgeLeft(node){ return {x: node.offsetLeft, y: node.offsetTop+node.offsetHeight/2}; }
+function curve(p1,p2){
+ let p=document.createElementNS(svgNS,"path");
+ let dx=(p2.x-p1.x)*.45;
+ p.setAttribute("d",`M ${p1.x} ${p1.y} C ${p1.x+dx} ${p1.y}, ${p2.x-dx} ${p2.y}, ${p2.x} ${p2.y}`);
+ s.appendChild(p);
+ return p;
+}
+function dot(pt){
+ let o=document.createElementNS(svgNS,"circle");
+ o.setAttribute("cx",pt.x); o.setAttribute("cy",pt.y); o.setAttribute("r",4);
+ s.appendChild(o);
+ return o;
+}
+
+/* ---- Passo 1: calcula a estrutura da árvore e as posições Y ---- */
+function computeLayout(item, level){
+ if(typeof item === 'string'){
+   const y = Y_START + leafCounter*LEAF_GAP;
+   leafCounter++;
+   return {label:item, level, children:null, y};
+ }
+ const label=item[0];
+ const childItems=item[1]||[];
+ const children = childItems.map(ch=>computeLayout(ch, level+1));
+ let y;
+ if(children.length){
+   y=(children[0].y+children[children.length-1].y)/2;
+ } else {
+   y=Y_START+leafCounter*LEAF_GAP;
+   leafCounter++;
+ }
+ return {label, level, children, y};
+}
+
+const rootChildren=[];
+for(const g of rawData){
+ rootChildren.push(computeLayout(g,1));
+ leafCounter+=GROUP_GAP_UNITS;
+}
+const rootY=(rootChildren[0].y+rootChildren[rootChildren.length-1].y)/2;
+const rootNode={label:"Gestão de Veículos Oficiais - Polícia Penal", level:0, children:rootChildren, y:rootY};
+
+/* ---- Passo 2: renderiza o DOM recursivamente ---- */
+function closeSubtree(node){
+ if(node.setOpen) node.setOpen(false);
+}
+
+function render(node, parentAnchor){
+ const cls = node.level===0 ? 'root' : (node.children ? '' : 'leaf');
+ const x = LEVEL_X[node.level];
+ const el = mk(node.label, x, node.y, cls);
+ node.el=el;
+
+ if(node.level>0){
+   const nLeft=edgeLeft(el);
+   const line=curve(parentAnchor,nLeft);
+   const d=dot(nLeft);
+   if(node.level>1){
+     el.classList.add('hidden');
+     line.classList.add('hiddenLine');
+     d.classList.add('hiddenLine');
+   }
+   node.line=line; node.dot=d;
+ }
+
+ if(node.children && node.children.length){
+   const nRight=edgeRight(el);
+   const symbol = node.level===0 ? '<' : '>';
+   const toggle=mkToggle(nRight,symbol);
+   node.toggle=toggle;
+   if(node.level>1){
+     toggle.classList.add('hidden');
+   }
+
+   node.childNodes = node.children.map(ch=>render(ch,nRight));
+
+   if(node.level===0){
+     toggle.style.cursor='default';
+   } else {
+     node.open=false;
+     const setOpen=(state)=>{
+       node.open=state;
+       node.childNodes.forEach(cn=>{
+         cn.el.classList.toggle('hidden', !state);
+         if(cn.line) cn.line.classList.toggle('hiddenLine', !state);
+         if(cn.dot) cn.dot.classList.toggle('hiddenLine', !state);
+         if(cn.toggle) cn.toggle.classList.toggle('hidden', !state);
+       });
+       toggle.textContent = state? '<' : '>';
+       if(!state){
+         node.childNodes.forEach(cn=>closeSubtree(cn));
+       }
+     };
+     el.onclick=()=>setOpen(!node.open);
+     toggle.onclick=(e)=>{e.stopPropagation(); setOpen(!node.open);};
+     node.setOpen=setOpen;
+     allControls.push(setOpen);
+   }
+ }
+ return node;
+}
+
+render(rootNode, null);
+
+function expandAll(){ allControls.forEach(f=>f(true)); }
+function collapseAll(){ allControls.forEach(f=>f(false)); }
+
+/* Ajusta dinamicamente o tamanho do canvas/svg conforme o conteúdo */
+const totalHeight = Y_START + leafCounter*LEAF_GAP + 200;
+const totalWidth = LEVEL_X[LEVEL_X.length-1] + 700;
+c.style.minWidth=totalWidth+'px';
+c.style.minHeight=totalHeight+'px';
+s.setAttribute('width',totalWidth);
+s.setAttribute('height',totalHeight);
+
+let z=window.innerWidth<=480?0.22:window.innerWidth<=768?0.28:0.35;
+function apply(){c.style.transform=`scale(${z})`}
+function zin(){z=Math.min(1.5,z+.1);apply()}
+function zout(){z=Math.max(.15,z-.1);apply()}
+window.onload=apply;
+
+/* Arrastar o mapa com o mouse (desktop). No celular/tablet o toque já
+   rola nativamente o container, então nenhum código extra é necessário ali. */
+(function(){
+ const wrapEl=document.getElementById('wrap');
+ let isDown=false, dragged=false, startX=0, startY=0, scrollLeft=0, scrollTop=0;
+
+ wrapEl.addEventListener('mousedown',(e)=>{
+   isDown=true; dragged=false;
+   wrapEl.classList.add('dragging');
+   startX=e.pageX; startY=e.pageY;
+   scrollLeft=wrapEl.scrollLeft; scrollTop=wrapEl.scrollTop;
+ });
+ window.addEventListener('mouseup',()=>{
+   isDown=false;
+   wrapEl.classList.remove('dragging');
+ });
+ window.addEventListener('mousemove',(e)=>{
+   if(!isDown) return;
+   e.preventDefault();
+   const dx=e.pageX-startX, dy=e.pageY-startY;
+   if(Math.abs(dx)>6||Math.abs(dy)>6) dragged=true;
+   wrapEl.scrollLeft=scrollLeft-dx;
+   wrapEl.scrollTop=scrollTop-dy;
+ });
+ // Evita que o "clique" disparado ao soltar o mouse após um arraste
+ // acione o expandir/recolher dos nós.
+ wrapEl.addEventListener('click',(e)=>{
+   if(dragged){ e.stopPropagation(); e.preventDefault(); dragged=false; }
+ },true);
+})();
+</script>
+</body>
+</html>
