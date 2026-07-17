@@ -71,7 +71,7 @@ const rawData=[
   ["Regras de Segurança",["Velocidade reduzida em cruzamentos","Uso obrigatório de cinto de segurança","Obediência a agentes de trânsito","Proibido ultrapassar sem visibilidade"]]
 ]],
 ["Atores e Deveres",[
-  ["Gestor de Frota",["Acompanhar consumo e quilometragem","Gerir cadastros e desativações","Avaliar eficiência e custos","Controlar o Diário de Bordo"]],
+  ["or de Frota",["Acompanhar consumo e quilometragem","Gerir cadastros e desativações","Avaliar eficiência e custos","Controlar o Diário de Bordo"]],
   ["Condutor",["Inspecionar o veículo e ferramentas","Zelar pela documentação e pneus","Preencher Diário de Bordo",
     ["Abastecimento",["Conferir quilometragem e litros","Verificar tipo de combustível","Validar valores da transação"]]
   ]],
@@ -151,7 +151,7 @@ for(const g of rawData){
  leafCounter+=GROUP_GAP_UNITS;
 }
 const rootY=(rootChildren[0].y+rootChildren[rootChildren.length-1].y)/2;
-const rootNode={label:"Gestão de Veículos Oficiais - Polícia Penal", level:0, children:rootChildren, y:rootY};
+const rootNode={label:"Boas Práticas-VTR", level:0, children:rootChildren, y:rootY};
 
 /* ---- Passo 2: renderiza o DOM recursivamente ---- */
 function closeSubtree(node){
