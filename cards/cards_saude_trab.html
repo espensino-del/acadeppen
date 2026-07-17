@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flashcards - Saúde do Trabalhador</title>
+<style>
+:root{
+--azul:#005C95; --azul2:#0A6FAF; --dourado:#d9a900;
+--bg:#eef3f8; --texto:#1b2430;
+}
+*{box-sizing:border-box}
+body{
+margin:0;font-family:'Segoe UI',Roboto,Arial,sans-serif;
+background:#000000;
+min-height:100vh;color:var(--texto);
+}
+.header{padding:18px;text-align:center;color:#333;background:#ffffff;
+backdrop-filter:blur(8px);
+}
+.logo{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0 auto 8px auto;
+background:#ffffff;
+}
+.logo img{
+max-width:320px;
+width:90%;
+height:auto;
+display:block;
+}
+
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+ 
+.container{max-width:760px;margin:auto;padding:0 18px 30px}
+.progress{height:8px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;margin:20px 0 18px}
+.bar{height:100%;width:0;background:var(--dourado);transition:.3s}
+.card{height:430px;perspective:1200px}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{
+position:absolute;inset:0;background:#fff;border-radius:28px;
+padding:28px;backface-visibility:hidden;
+box-shadow:0 15px 45px rgba(0,0,0,.18);
+border-top:8px solid var(--dourado);
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+}
+.back{transform:rotateY(180deg)}
+.badge{
+background:var(--dourado);color:#fff;
+padding:8px 16px;border-radius:999px;
+font-weight:700;font-size:.85rem;letter-spacing:.08em;
+}
+.content{margin:28px 0;font-size:1.18rem;line-height:1.7;text-align:center;overflow:auto;max-height:250px}
+.tip{color:#6c7785;font-size:.92rem}
+.controls{display:flex;gap:14px;margin-top:18px}
+button{
+flex:1;border:none;padding:15px;border-radius:16px;
+background:#333333;color:#fff;font-weight:700;
+cursor:pointer;transition:.2s;
+}
+button:hover{transform:translateY(-2px)}
+.counter{text-align:center;color:#fff;margin-top:14px;font-weight:600}
+.hidden{display:none}
+@media(max-width:600px){
+.card{height:500px}
+.content{font-size:1.05rem}
+}
+
+.top{
+ background:var(--dourado);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+}
+
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo"><img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png" alt="Polícia Penal RS"></div><h2 style="color:#333;margin:8px 0 4px;">Flashcards Interativos - Saúde do Trabalhador</h2>
+</div>
+
+<div class="topbar">
+<button class="top" onclick="location.href='cards.html'">Menu</button>
+</div>
+
+<div class="container">
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+    <section class="card" data-i="0">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Segundo Christophe Dejours, o sujeito é portador de uma _____ que preexiste ao encontro da situação de trabalho.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">história singular</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="1">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Para Dejours, o trabalho é considerado favorável quando permite o _____ em relação ao conteúdo da tarefa.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">livre funcionamento</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="2">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">De acordo com Dejours, o que acontece quando o trabalho não permite o livre funcionamento do sujeito?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Torna-se um fator de sofrimento e de doença.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="3">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como a 'organização do trabalho' atua na geração de conflitos segundo Dejours?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Sujeita o desejo do trabalhador à realidade limitada do trabalho, criando formas patológicas.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="4">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Por que, para Dejours, o sofrimento no trabalho não implica necessariamente em doença mental?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Porque os indivíduos conseguem criar defesas e mecanismos de proteção.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="5">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em que momento criativo o sofrimento está presente na condição humana de trabalho?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Quando o sujeito enfrenta situações inéditas ou não previstas que precisam ser resolvidas.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="6">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como Dejours define 'Doença' no contexto laboral?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Sofrimento insuportável onde o trabalho não permite subverter o sofrimento em prazer.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="7">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A saúde organizacional é determinada pela relação entre a _____ e a organização.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">história individual</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="8">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Defina 'Trabalho Prescrito' segundo Christophe Dejours.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">É o que antecede a execução, servindo para orientação, burocratização e fiscalização.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="9">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como Dejours define o 'Trabalho Real'?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">É a ação real do trabalhador no momento da execução, incluindo tudo o que não está prescrito.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="10">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que caracteriza o 'Sofrimento Criativo'?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A transformação do sofrimento em criatividade, aumentando a resistência psíquica e somática.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="11">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a função das 'Estratégias Defensivas' no trabalho?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Mediar o sofrimento através da adaptação, ajuste ou transformação da organização.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="12">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">As estratégias defensivas podem ser constituídas pelos trabalhadores de forma individual ou _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">coletiva</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="13">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual o efeito das estratégias defensivas construídas sobre a percepção do trabalhador?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Elas alteram a percepção da realidade de trabalho.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="14">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O conceito de estresse pode ser definido como um conjunto de reações de um organismo submetido a um _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">esforço de adaptação</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="15">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O estresse também pode ser entendido como o grau de _____ que uma estrutura sofre sob esforço.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">deformidade</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="16">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Defina 'Eustress' (Estresse Positivo).</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Esforço de adaptação que gera realização pessoal, bem-estar e satisfação de necessidades.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="17">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que caracteriza o 'Distress' (Estresse Negativo)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Tensão com rompimento do equilíbrio biopsicossocial por excesso ou falta de esforço.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="18">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais as duas fontes principais de estímulo no processo de estresse?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Mundo externo (meio socioeconômico) e mundo interno (pensamentos e emoções).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="19">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que ocorre na 'Reação de Alarme' da Síndrome Geral de Adaptação?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Preparação para luta ou fuga, com aumento da pressão arterial e frequências cardíaca/respiratória.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="20">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Descreva a 'Fase da Resistência' no processo de estresse.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A resistência ao estressor aumenta, podendo gerar irritabilidade, insônia e mudanças de humor.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="21">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que marca a 'Fase de Exaustão' do estresse?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Esgotamento por sobrecarga fisiológica e surgimento de doenças crônicas de difícil reversão.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="22">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Cite exemplos de estressores relacionados à 'exigência de tempo'.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Horas extras, trabalho em turnos e ritmo da máquina.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="23">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais estressores compõem a 'Estrutura das tarefas'?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Falta de controle e subutilização de capacidades.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="24">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Dê exemplos de estressores de 'Condições físicas'.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Ameaças de riscos tóxicos, ergonômicos ou ambientes desagradáveis.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="25">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais fatores definem os estressores da 'Organização do trabalho'?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Ambiguidade de papel, conflito de papel, competição e rivalidade.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="26">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que são estressores 'Extraorganizacionais'?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Fatores relacionados à comunidade, insegurança no emprego e preocupação com a carreira.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="27">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Cite indicadores emocionais de estresse presentes no material.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Ansiedade, depressão, instabilidade emocional, agressividade e irritabilidade.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="28">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais indicadores físicos de estresse são mencionados?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Úlceras, alergias, asma, enxaqueca e disfunções coronarianas.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="29">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais comportamentos servem como indicadores de estresse?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Acidentes, ausências, queda no desempenho profissional e conflitos domésticos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="30">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como o indivíduo reage no 'Enfrentamento Ativo' ao estresse?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Expressa desejo de mudança, solicita transferência voluntária ou participa de movimentos trabalhistas.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="31">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Descreva o comportamento do indivíduo no 'Enfrentamento Passivo'.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Deprecia o trabalho, foca apenas na remuneração e apresenta maior absenteísmo.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="32">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Segundo Chiavenato (2010), a supervisão de _____ é uma das principais causas de estresse no trabalho.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">baixa qualidade</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="33">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual a condição necessária para o desenvolvimento do Transtorno de Estresse Pós-traumático (TEPT)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Exposição a um ou mais eventos traumáticos envolvendo morte, ferimento sério ou ameaça à integridade.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="34">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O TEPT está classificado no DSM-5 como um transtorno relacionado ao _____ e a estressores.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">trauma</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="35">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Diferencie Transtorno de Estresse Agudo de TEPT quanto ao tempo de ocorrência.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O Transtorno de Estresse Agudo ocorre logo após o evento traumático.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="36">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que são 'Sintomas de Intrusão' no TEPT?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Lembranças involuntárias, sonhos angustiantes ou revivência de momentos do trauma.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="37">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Cite um exemplo de reação fisiológica associada aos sintomas de intrusão do TEPT.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Aceleração dos batimentos cardíacos ou suor ao lembrar do evento.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="38">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que caracteriza os 'Sintomas de Esquiva' no TEPT?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Evitar pensamentos, atividades, pessoas ou locais que remetam ao trauma.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="39">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual alteração cognitiva negativa é comum no TEPT?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Incapacidade de lembrar fatos importantes do evento ou expectativas negativas exageradas sobre si mesmo.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="40">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Cite exemplos de estados emocionais negativos persistentes no TEPT.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Medo, horror, raiva, culpa ou vergonha.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="41">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que caracteriza a alteração na 'Excitabilidade e Reatividade' no TEPT?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Irritabilidade, explosões exacerbadas, comportamento imprudente ou problemas de concentração.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="42">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A Síndrome de Burnout (SB) surge com mais frequência em quais profissionais?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Aqueles que trabalham intensamente sob pressão, colocando seus interesses em segundo plano.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="43">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quem desenvolveu a conceitualização e o modelo de investigação da Síndrome de Burnout?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Christina Maslach</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="44">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais são os três componentes da Síndrome de Burnout (SB)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Exaustão emocional/física, baixa produtividade e excesso de despersonalização.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="45">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que representa a dimensão 'Despersonalização' na Síndrome de Burnout?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Distanciamento emocional, frieza e tratamento dos outros como objetos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="46">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como se caracteriza a dimensão 'Realização Profissional' na SB?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Sentimento de insatisfação laboral, incompetência e deterioração da autoestima profissional.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="47">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual a diferença fundamental entre Assédio Sexual e Assédio Moral?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Embora relacionados à violência, possuem naturezas distintas, mas podem coexistir.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="48">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que define o assédio moral 'horizontal'?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Aquele que ocorre entre colegas de mesmo nível hierárquico.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="49">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual a premissa de Dejours sobre o trabalho e o desejo do trabalhador?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A organização do trabalho sujeita o desejo do trabalhador à realidade limitada da tarefa.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="50">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">No modelo de estresse, o que compõe o 'Mundo Interno' do indivíduo?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Pensamentos, sentimentos, emoções e fantasias.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="51">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual a reação normal a uma situação anormal no contexto do trauma?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A manifestação de sintomas de estresse físico ou psíquico logo após o evento.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="52">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como o Burnout afeta a relação interpessoal do profissional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Através da despersonalização, gerando insensibilidade diante das necessidades alheias.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="53">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O 'comportamento autodestrutivo' é um indicador de qual categoria de sintomas do TEPT?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Excitabilidade e Reatividade.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="54">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Segundo o material, as estratégias defensivas podem alterar a percepção da _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">realidade de trabalho</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="55">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual o principal objetivo do 'enfrentamento passivo' ao estresse ocupacional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Apenas a obtenção da remuneração.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="56">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A 'ambiguidade de papel' é classificada como um estressor de qual tipo?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Organização do trabalho.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="57">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como o TEPT afeta a capacidade de experimentar emoções?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Gera uma incapacidade persistente de sentir emoções positivas como felicidade ou satisfação.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="58">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que Dejours entende por 'livre funcionamento'?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A possibilidade de o sujeito imprimir sua marca pessoal e desejo no conteúdo da tarefa.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="59">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Na Síndrome Geral de Adaptação, a ulceração no aparelho digestivo costuma aparecer em qual fase?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Fase da resistência.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="60">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O sentimento de distanciamento ou estranhamento em relação a outras pessoas é um sintoma de _____ no TEPT.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">cognições e humor negativos</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="61">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que caracteriza o esforço 'sadio' mencionado no conceito de Eustress?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">É um esforço na garantia de sobrevivência que gera satisfação ao ser valorizado.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="62">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A exposição repetida a detalhes aversivos de um trauma gera TEPT mesmo sem presença física, exceto se for via _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">mídia eletrônica</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="63">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual dimensão do Burnout funciona como uma resposta defensiva do indivíduo?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Despersonalização.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="64">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como o material define a relação entre assédio sexual e moral?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Possuem a mesma matriz de atos de violência explícitos ou sutis.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+
+<div class="controls">
+<button id="prev">⬅ Anterior</button>
+<button id="next">Próximo ➡</button>
+</div>
+
+<div class="counter"><span id="cur">1</span> / 65 cartões</div>
+</div>
+
+<script>
+const cards=[...document.querySelectorAll('.card')];
+let i=0;
+
+function update(){
+cards.forEach((c,n)=>c.classList.toggle('hidden',n!==i));
+document.getElementById('cur').textContent=i+1;
+document.getElementById('bar').style.width=((i+1)/cards.length*100)+'%';
+}
+update();
+
+cards.forEach(c=>c.onclick=()=>c.classList.toggle('flipped'));
+
+next.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i+1)%cards.length; update();
+};
+prev.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i-1+cards.length)%cards.length; update();
+};
+</script>
+</body></html>
