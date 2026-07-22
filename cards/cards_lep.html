@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flashcards - LEP (Lei de Execução Penal)</title>
+<style>
+:root{
+--azul:#005C95; --azul2:#0A6FAF; --dourado:#d9a900;
+--bg:#eef3f8; --texto:#1b2430;
+}
+*{box-sizing:border-box}
+body{
+margin:0;font-family:'Segoe UI',Roboto,Arial,sans-serif;
+background:#000000;
+min-height:100vh;color:var(--texto);
+}
+.header{padding:18px;text-align:center;color:#333;background:#ffffff;
+backdrop-filter:blur(8px);
+}
+.logo{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0 auto 8px auto;
+background:#ffffff;
+}
+.logo img{
+max-width:320px;
+width:90%;
+height:auto;
+display:block;
+}
+
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+ 
+.container{max-width:760px;margin:auto;padding:0 18px 30px}
+.progress{height:8px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;margin:20px 0 18px}
+.bar{height:100%;width:0;background:var(--dourado);transition:.3s}
+.card{height:430px;perspective:1200px}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{
+position:absolute;inset:0;background:#fff;border-radius:28px;
+padding:28px;backface-visibility:hidden;
+box-shadow:0 15px 45px rgba(0,0,0,.18);
+border-top:8px solid var(--dourado);
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+}
+.back{transform:rotateY(180deg)}
+.badge{
+background:var(--dourado);color:#fff;
+padding:8px 16px;border-radius:999px;
+font-weight:700;font-size:.85rem;letter-spacing:.08em;
+}
+.content{margin:28px 0;font-size:1.18rem;line-height:1.7;text-align:center;overflow:auto;max-height:250px}
+.tip{color:#6c7785;font-size:.92rem}
+.controls{display:flex;gap:14px;margin-top:18px}
+button{
+flex:1;border:none;padding:15px;border-radius:16px;
+background:#333333;color:#fff;font-weight:700;
+cursor:pointer;transition:.2s;
+}
+button:hover{transform:translateY(-2px)}
+.counter{text-align:center;color:#fff;margin-top:14px;font-weight:600}
+.hidden{display:none}
+@media(max-width:600px){
+.card{height:500px}
+.content{font-size:1.05rem}
+}
+
+.top{
+ background:var(--dourado);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+}
+
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo"><img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png" alt="Polícia Penal RS"></div><h2 style="color:#333;margin:8px 0 4px;">Flashcards Interativos - LEP (Lei de Execução Penal)</h2>
+</div>
+
+<div class="topbar">
+<button class="top" onclick="location.href='cards.html'">Menu</button>
+</div>
+
+<div class="container">
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+    <section class="card" data-i="0">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">De acordo com o Art. 1º da LEP, quais são os dois objetivos fundamentais da execução penal?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Efetivar as disposições da sentença criminal e proporcionar condições para a integração social do condenado.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="1">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a natureza jurídica da execução penal conforme a doutrina mencionada?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Natureza mista, envolvendo atividades jurisdicionais e administrativas.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="2">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Na natureza mista da execução penal, a qual órgão compete a atividade jurisdicional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Poder Judiciário, especificamente por meio da Vara de Execuções Criminais (VEC).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="3">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Na natureza mista da execução penal, a qual órgão compete a atividade administrativa?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Poder Executivo, por meio da administração dos estabelecimentos penais.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="4">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O Art. 2º da LEP estabelece que a lei se aplica igualmente ao preso condenado e ao preso _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">provisório</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="5">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em que condição a LEP se aplica a condenados pela justiça eleitoral ou militar?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Quando estiverem recolhidos em estabelecimentos sujeitos à jurisdição ordinária.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="6">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Segundo o Art. 3º da LEP, quais direitos são assegurados ao condenado e ao internado?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Todos os direitos não atingidos pela sentença ou pela lei.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="7">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O parágrafo único do Art. 3º da LEP consagra o Princípio da _____, proibindo distinções raciais, sociais, religiosas ou políticas.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Isonomia</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="8">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">De acordo com o Art. 5º da LEP, quais critérios orientam a classificação dos condenados para a individualização da pena?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Os seus antecedentes e a sua personalidade.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="9">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais são os três aspectos do Princípio da Individualização da Pena?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Individualização legislativa, judicial e executória.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="10">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual órgão é responsável por elaborar o programa individualizador da pena privativa de liberdade?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Comissão Técnica de Classificação (CTC).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="11">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Para quem o exame criminológico é obrigatório visando a individualização da execução?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Condenados ao cumprimento de pena em regime fechado.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="12">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O condenado ao regime _____ poderá ser submetido ao exame criminológico para fins de classificação.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">semiaberto</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="13">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é o objetivo principal do Exame de Classificação?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Orientar o modo de cumprimento da pena visando a ressocialização.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="14">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que busca construir o Exame Criminológico a partir do binômio delito-delinquente?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Um prognóstico de periculosidade-temibilidade do reeducando.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="15">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">De acordo com o Art. 9º-A, qual é o regime inicial que obriga o condenado à identificação do perfil genético (DNA)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Regime inicial fechado.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="16">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a consequência disciplinar para o condenado que se recusa a fornecer material para identificação do perfil genético?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Constitui falta grave.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="17">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Segundo o Art. 10 da LEP, a assistência ao preso e ao internado é um dever do _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Estado</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="18">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a finalidade da assistência prestada pelo Estado ao preso e ao internado?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Prevenir o crime e orientar o retorno à convivência em sociedade.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="19">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">As 'Regras de Mandela' referem-se a quais diretrizes internacionais?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Regras Mínimas da ONU para o Tratamento de Reclusos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="20">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais são as seis formas de assistência previstas no Art. 11 da LEP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Material, saúde, jurídica, educacional, social e religiosa.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="21">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que compreende a assistência material ao preso e ao internado segundo o Art. 12 da LEP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Fornecimento de alimentação, vestuário e instalações higiênicas.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="22">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como são chamados os locais destinados à venda de produtos permitidos e não fornecidos pela administração prisional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Cantinas</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="23">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais atendimentos compõem a assistência à saúde de caráter preventivo e curativo (Art. 14)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Atendimento médico, farmacêutico e odontológico.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="24">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quem deve autorizar a prestação de assistência médica em local externo quando o presídio não estiver aparelhado?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A direção do estabelecimento.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="25">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual alternativa legal é mencionada (Art. 117) quando não é possível prestar assistência à saúde adequada no presídio?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Prisão domiciliar.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="26">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A assistência médica à mulher no sistema prisional deve ser garantida especificamente em quais períodos?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">No pré-natal e no pós-parto, sendo extensiva ao recém-nascido.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="27">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Por quanto tempo, no máximo, a PFMP costuma abrigar crianças recém-nascidas?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Até os 6 meses de idade.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="28">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">As 'Regras de Bangkok' estabelecem diretrizes da ONU para qual público específico?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Mulheres infratoras.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="29">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A quem se destina prioritariamente a assistência jurídica gratuita dentro dos estabelecimentos penais?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Aos presos e internados sem recursos financeiros para constituir advogado.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="30">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual instituição é responsável por prestar assistência jurídica integral e gratuita aos presos?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Defensoria Pública.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="31">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que compreende a assistência educacional prevista no Art. 17 da LEP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A instrução escolar e a formação profissional do preso e do internado.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="32">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual nível de ensino é obrigatório dentro do sistema prisional segundo o Art. 18 da LEP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Ensino de $1^{\circ}$ Grau (Ensino Fundamental).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="33">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O Art. 18-A da LEP determina a implantação de qual nível de ensino nos presídios?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Ensino Médio, regular ou supletivo.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="34">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Todo estabelecimento prisional deve ser dotado de uma _____ para uso de todas as categorias de reclusos.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">biblioteca</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="35">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a finalidade da assistência social prevista no Art. 22 da LEP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Amparar o preso e o internado e prepará-los para o retorno à liberdade.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="36">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Cite uma incumbência do serviço de assistência social em relação à família do preso.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Orientar e amparar, quando necessário, a família do preso, do internado e da vítima.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="37">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual direito religioso é garantido aos presos e internados pelo Art. 24 da LEP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">A liberdade de culto e a participação nos serviços organizados no estabelecimento.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="38">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O preso ou internado pode ser obrigado a participar de atividades religiosas?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Não, a participação não é obrigatória.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="39">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual norma instituiu o serviço de Assistência Religiosa no sistema prisional do Rio Grande do Sul?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Instrução Normativa SJSPS $n^{\circ}$ 001/2022.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="40">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em que consiste a assistência ao egresso prevista no Art. 25 da LEP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Orientação para reintegração à liberdade e concessão de alojamento e alimentação se necessário.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="41">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é o prazo máximo de concessão de alojamento e alimentação ao egresso em estabelecimento adequado?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">02 meses.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="42">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quem é considerado egresso para efeitos da LEP em relação ao liberado definitivo?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O liberado definitivo pelo prazo de 1 (um) ano a contar da saída do estabelecimento.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="43">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quem é considerado egresso para efeitos da LEP em relação ao liberado condicional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O liberado condicional durante o período de prova.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="44">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Segundo a PNAPE, quem é considerado 'pré-egressa'?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Pessoa em cumprimento de pena nos seis meses que antecedem a sua soltura.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="45">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é a finalidade do trabalho do preso de acordo com a LEP?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Finalidade educativa e produtiva.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="46">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O trabalho do preso é regido pela Consolidação das Leis do Trabalho (CLT)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Não, o trabalho do preso não está sujeito ao regime da CLT.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="47">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é o limite mínimo de remuneração para o trabalho do preso em relação ao salário mínimo?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Não pode ser inferior a $3/4$ (três quartos) do salário mínimo ($75\%$).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="48">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A assistência ao egresso é tratada em qual tópico numerado do material?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Tópico 3.7.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="49">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual decreto instituiu a Política Nacional de Atenção à Pessoa Egressa do Sistema Prisional (PNAPE)?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Decreto $n^{\circ}$ 11.843, de 21 de dezembro de 2023.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+<div class="controls">
+<button id="prev">⬅ Anterior</button>
+<button id="next">Próximo ➡</button>
+</div>
+
+<div class="counter"><span id="cur">1</span> / 50 cartões</div>
+</div>
+
+<script>
+const cards=[...document.querySelectorAll('.card')];
+let i=0;
+
+function update(){
+cards.forEach((c,n)=>c.classList.toggle('hidden',n!==i));
+document.getElementById('cur').textContent=i+1;
+document.getElementById('bar').style.width=((i+1)/cards.length*100)+'%';
+}
+update();
+
+cards.forEach(c=>c.onclick=()=>c.classList.toggle('flipped'));
+
+next.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i+1)%cards.length; update();
+};
+prev.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i-1+cards.length)%cards.length; update();
+};
+</script>
+</body></html>
