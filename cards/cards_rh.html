@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flashcards - Recursos Humanos</title>
+<style>
+:root{
+--azul:#005C95; --azul2:#0A6FAF; --dourado:#d9a900;
+--bg:#eef3f8; --texto:#1b2430;
+}
+*{box-sizing:border-box}
+body{
+margin:0;font-family:'Segoe UI',Roboto,Arial,sans-serif;
+background:#000000;
+min-height:100vh;color:var(--texto);
+}
+.header{padding:18px;text-align:center;color:#333;background:#ffffff;
+backdrop-filter:blur(8px);
+}
+.logo{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0 auto 8px auto;
+background:#ffffff;
+}
+.logo img{
+max-width:320px;
+width:90%;
+height:auto;
+display:block;
+}
+
+.topbar{
+ padding:15px;
+ text-align:center;
+}
+ 
+.container{max-width:760px;margin:auto;padding:0 18px 30px}
+.progress{height:8px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;margin:20px 0 18px}
+.bar{height:100%;width:0;background:var(--dourado);transition:.3s}
+.card{height:430px;perspective:1200px}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{
+position:absolute;inset:0;background:#fff;border-radius:28px;
+padding:28px;backface-visibility:hidden;
+box-shadow:0 15px 45px rgba(0,0,0,.18);
+border-top:8px solid var(--dourado);
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+}
+.back{transform:rotateY(180deg)}
+.badge{
+background:var(--dourado);color:#fff;
+padding:8px 16px;border-radius:999px;
+font-weight:700;font-size:.85rem;letter-spacing:.08em;
+}
+.content{margin:28px 0;font-size:1.18rem;line-height:1.7;text-align:center;overflow:auto;max-height:250px}
+.tip{color:#6c7785;font-size:.92rem}
+.controls{display:flex;gap:14px;margin-top:18px}
+button{
+flex:1;border:none;padding:15px;border-radius:16px;
+background:#333333;color:#fff;font-weight:700;
+cursor:pointer;transition:.2s;
+}
+button:hover{transform:translateY(-2px)}
+.counter{text-align:center;color:#fff;margin-top:14px;font-weight:600}
+.hidden{display:none}
+@media(max-width:600px){
+.card{height:500px}
+.content{font-size:1.05rem}
+}
+
+.top{
+ background:var(--dourado);border:none;padding:10px 16px;border-radius:20px;
+ font-weight:bold;cursor:pointer;color:#111
+}
+
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo"><img src="https://esp.susepe.rs.gov.br/ead/pluginfile.php/1/theme_klass/logo/1771954056/topEaD_PP_.png" alt="Polícia Penal RS"></div><h2 style="color:#333;margin:8px 0 4px;">Flashcards Interativos - Recursos Humanos</h2>
+</div>
+
+<div class="topbar">
+<button class="top" onclick="location.href='cards.html'">Menu</button>
+</div>
+
+<div class="container">
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+    <section class="card" data-i="0">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual divisão é responsável pelo gerenciamento dos registros e situações funcionais do servidor, do ingresso à aposentadoria?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Divisão de Recursos Humanos (DRH).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="1">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A qual departamento a Divisão de Recursos Humanos (DRH) está subordinada?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Departamento Administrativo.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="2">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Cargo de provimento efetivo com atribuições de vigilância, custódia e segurança de pessoas presas: _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Policial Penal.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="3">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual cargo da Polícia Penal possui atribuições técnicas de orientação e assistência à execução penal?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Analista da Polícia Penal.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="4">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Atribuição do cargo de Técnico Administrativo da Polícia Penal: _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Planejamento, organização e execução de serviços administrativos e apoio ao tratamento penal.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="5">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Segundo a OS nº 03/2016, quem deve consolidar as demandas administrativas de pessoal das unidades antes de enviá-las à DRH?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Delegacias Penitenciárias Regionais (DPRs).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="6">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais são as três providências de acesso que o servidor deve solicitar à Chefia Imediata ao chegar no local de lotação?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Login de usuário de rede, e-mail funcional e primeiro acesso ao SIMUS.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="7">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual sistema é utilizado pela chefia imediata para solicitar a conta de e-mail funcional do servidor?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Sistema SIMUS.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="8">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Para qual endereço de e-mail deve ser enviada a solicitação preenchida de crachá funcional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">cracha-funcional@susepe.rs.gov.br.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="9">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em pedidos de 2ª via de crachá por perda, furto ou roubo, qual documento deve obrigatoriamente ser anexado?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Cópia da ocorrência policial.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="10">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Onde o servidor encontra os formulários para solicitação de crachá e carteira funcional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Na INTRANET.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="11">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Mencione três casos em que o crachá funcional deve ser obrigatoriamente devolvido à DRH.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Afastamento, demissão, aposentadoria, exoneração, retorno à origem, readaptação ou relotação.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="12">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Para qual e-mail deve ser enviada a solicitação de carteira funcional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">carteira-funcional@susepe.rs.gov.br.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="13">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual órgão realiza a confecção da carteira funcional após a análise e autorização da DRH?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Instituto Geral de Perícias (IGP).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="14">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Para o Policial Penal, qual documento específico deve acompanhar o formulário de solicitação da carteira funcional?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Declaração de dedicação exclusiva.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="15">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A carteira de identidade funcional dos Policiais Penais, se preenchidos os requisitos, vale como autorização para _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Porte de arma de fogo.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="16">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">A submissão ao regime de dedicação exclusiva veda qualquer atividade remunerada, com exceção da função de _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Instrutor em áreas relacionadas ao Sistema Prisional.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="17">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Mencione duas hipóteses de devolução da Carteira Funcional citadas no texto.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Exoneração, demissão, falecimento, readaptação, inquérito (administrativo/policial) ou remoção.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="18">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual sistema é utilizado para o recadastramento anual, solicitação de férias e alteração de dados pessoais?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Interface RHE (IF-RHE).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="19">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual é o período estabelecido para o servidor ativo realizar o recadastramento anual obrigatório?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Entre o 1º dia do mês anterior e o último dia do mês posterior ao de seu aniversário.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="20">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Se o servidor não realizar o recadastramento no período e expirar o prazo de 15 dias da notificação, qual a consequência?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O pagamento será suspenso.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="21">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Documentos inseridos no IF-RHE podem ser utilizados para fins de promoção?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Não, nenhum documento inserido no IF-RHE será apreciado para fins de promoção.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="22">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Defina a forma de provimento 'Nomeação'.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Provimento em caráter efetivo (via concurso público) ou em comissão (cargo de confiança de livre exoneração).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="23">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que é o 'Exercício' e qual o seu prazo máximo contado a partir da posse?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">É o efetivo desempenho das atribuições do cargo, devendo ocorrer em até 30 dias.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="24">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O retorno do servidor demitido ao cargo anterior em decorrência de decisão judicial ou administrativa é chamado de _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Reintegração.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="25">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quantos meses de exercício são exigidos para o servidor obter o primeiro período aquisitivo de férias?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">12 (doze) meses.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="26">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Em quantos períodos as férias podem ser gozadas, desde que haja concordância da chefia?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Em até 3 (três) períodos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="27">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual o tempo mínimo permitido para cada período de férias, caso sejam parceladas?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">5 (cinco) dias.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="28">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O servidor perde o direito às férias se tiver mais de _____ faltas não justificadas no ano antecedente.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">30 (trinta) dias.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="29">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais são as duas formas de cumprimento da jornada de trabalho previstas para a Polícia Penal?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Expediente administrativo e escalas de plantão.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="30">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O registro do horário de trabalho deve ser realizado preferencialmente via _____.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Relógio Ponto Eletrônico.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="31">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual o intervalo mínimo de almoço para servidores em estabelecimentos penais de difícil acesso?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">30 minutos.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="32">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual o intervalo mínimo de almoço para servidores no Órgão Central e Delegacias Regionais?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">1 (uma) hora.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="33">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Mencione um critério geográfico para que um estabelecimento prisional seja considerado de difícil acesso.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Distância de &gt;5km da prefeitura, transporte coletivo a &gt;1000m ou estradas vicinais de difícil trafegabilidade.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="34">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O serviço extraordinário (hora extra) exige autorização prévia de qual autoridade estadual?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Do Governador.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="35">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O horário extraordinário diário não pode exceder qual porcentagem da carga horária sujeita ao servidor?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">25% (vinte e cinco por cento).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="36">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual o limite máximo de horas extras permitido por mês?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">40 horas mensais.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="37">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quem está impedido de receber gratificação por exercício de serviço extraordinário?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Detentores de função gratificada (FG) ou cargo em comissão (CC).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="38">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual informação técnica deve obrigatoriamente constar nos atestados médicos para concessão de licença saúde?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Código CID (Classificação Internacional de Doenças).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="39">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Até qual grau de parentesco colateral consanguíneo é permitida a licença por motivo de doença em pessoa da família?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Até o 2º grau.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="40">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual a remuneração do servidor na licença por doença em pessoa da família no período que exceder 180 até 365 dias?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">1/3 (um terço) da remuneração.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="41">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Após a licença maternidade, por quanto tempo é assegurado o direito de horário especial à servidora lactante?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">2 (dois) meses.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="42">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual a redução de carga horária para a lactante que trabalha em regime de turno único?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">3 (três) horas consecutivas por dia.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="43">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Mencione dois requisitos necessários para a aprovação no estágio probatório.</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Assiduidade e aprovação no curso de formação profissional.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="44">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual o acréscimo constitucional pago ao servidor por ocasião das férias?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">1/3 (um terço) da remuneração do período.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="45">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">É permitido abater faltas ao serviço do período de férias?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Não, é vedado levar à conta de férias qualquer falta ao serviço.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="46">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Como deve ser feito o primeiro acesso ao SIMUS pelo novo servidor?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Por meio da Chefia Imediata no local de lotação.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="47">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O que ocorre se o laudo médico registrar parecer contrário à concessão da licença pleiteada?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">As faltas ao serviço correrão sob responsabilidade exclusiva do servidor.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="48">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual ferramenta do Office 365 é utilizada para reuniões virtuais e chamadas de voz?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Microsoft Teams.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="49">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">O servidor da Polícia Penal pode ser colocado à disposição de outros órgãos da Administração?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">Sim, por prazo determinado e mediante prévia autorização.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="50">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Quais as ferramentas de armazenamento em nuvem e edição conjunta fornecidas no pacote Microsoft 365?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">OneDrive e Pacote Office (Word, Excel, PowerPoint).</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card" data-i="51">
+      <div class="card-inner">
+        <div class="face front">
+          <span class="badge">PERGUNTA</span>
+          <div class="content">Qual a consequência de faltar mais de 30 dias injustificadamente para o direito às férias?</div>
+          <div class="tip">Toque para virar</div>
+        </div>
+        <div class="face back">
+          <span class="badge">RESPOSTA</span>
+          <div class="content">O servidor perde o direito às férias no ano seguinte.</div>
+          <div class="tip">Toque para voltar</div>
+        </div>
+      </div>
+    </section>
+    
+<div class="controls">
+<button id="prev">⬅ Anterior</button>
+<button id="next">Próximo ➡</button>
+</div>
+
+<div class="counter"><span id="cur">1</span> / 52 cartões</div>
+</div>
+
+<script>
+const cards=[...document.querySelectorAll('.card')];
+let i=0;
+
+function update(){
+cards.forEach((c,n)=>c.classList.toggle('hidden',n!==i));
+document.getElementById('cur').textContent=i+1;
+document.getElementById('bar').style.width=((i+1)/cards.length*100)+'%';
+}
+update();
+
+cards.forEach(c=>c.onclick=()=>c.classList.toggle('flipped'));
+
+next.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i+1)%cards.length; update();
+};
+prev.onclick=()=>{
+cards[i].classList.remove('flipped');
+i=(i-1+cards.length)%cards.length; update();
+};
+</script>
+</body></html>
